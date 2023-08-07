@@ -1,0 +1,3 @@
+C:\Users\usrTechsoft\source\repos\TarjetaCreditoBecarios\obj\Debug\TarjetaCreditoBecarios.csproj.AssemblyReference.cache
+C:\Users\usrTechsoft\source\repos\TarjetaCreditoBecarios\obj\Debug\TarjetaCreditoBecarios.csproj.SuggestedBindingRedirects.cache
+C:\Users\usrTechsoft\source\repos\TarjetaCreditoBecarios\obj\Debug\TarjetaCreditoBecarios.csproj.CoreCompileInputs.cache
