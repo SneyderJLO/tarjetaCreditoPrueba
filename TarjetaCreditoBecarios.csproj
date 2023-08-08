@@ -35,15 +35,5 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\CapaVista\CapaVista.csproj">
-      <Project>{8f18f6f3-a41f-469a-8031-96311ac09df0}</Project>
-      <Name>CapaVista</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\TarjetaCreditoApi\TarjetaCreditoApi.csproj">
-      <Project>{234674cf-e1c9-4a40-a0e1-cae783cd2ae0}</Project>
-      <Name>TarjetaCreditoApi</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

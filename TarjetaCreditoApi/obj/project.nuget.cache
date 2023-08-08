@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "3h87TAvuYpeBqC3Axk9ZpTZK5NIAm1rymzcOcy8wHhZAzptHG4nMwYU5hlhW9GLbztmE2KyMfHDXZkoVZgDOHA==",
+  "dgSpecHash": "/EhZVUHlqTLkPjHd5PPnL3bcL8Kw8lWXUNQpG6KXjcNOsN6Q+yOKanAqVjebYHlKLY0IGjWJQl9EwkgrprOTIg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\usrTechsoft\\source\\repos\\TarjetaCreditoApi\\TarjetaCreditoApi.csproj",
+  "projectFilePath": "C:\\Users\\usrTechsoft\\source\\repos\\TarjetaCreditoBecarios\\TarjetaCreditoApi\\TarjetaCreditoApi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\usrTechsoft\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
     "C:\\Users\\usrTechsoft\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",

@@ -1,15 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "gC3j9yhmOgZauMwXkE5HrCGV1A2MXEl20e5ZjMS1gQlNflcZ3PZFb//p51XenX8+4eRKGZ5pFwrjkOxzMU6Tpw==",
+  "dgSpecHash": "AhM5u0r4/2o+JTUewwKE8Oa+/y0Xe+RE4mpXHxWUdgmy+yJtQtVrYu1j+mStgzIjxM3D3YrjuvZxrAWTAr7BGw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\usrTechsoft\\source\\repos\\CapaVista\\CapaVista.csproj",
-  "expectedPackageFiles": [
-    "C:\\Users\\usrTechsoft\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
-    "C:\\Users\\usrTechsoft\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
-    "C:\\Users\\usrTechsoft\\.nuget\\packages\\swashbuckle.aspnetcore\\6.2.3\\swashbuckle.aspnetcore.6.2.3.nupkg.sha512",
-    "C:\\Users\\usrTechsoft\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.2.3\\swashbuckle.aspnetcore.swagger.6.2.3.nupkg.sha512",
-    "C:\\Users\\usrTechsoft\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.2.3\\swashbuckle.aspnetcore.swaggergen.6.2.3.nupkg.sha512",
-    "C:\\Users\\usrTechsoft\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.2.3\\swashbuckle.aspnetcore.swaggerui.6.2.3.nupkg.sha512"
-  ],
+  "projectFilePath": "C:\\Users\\usrTechsoft\\source\\repos\\TarjetaCreditoBecarios\\CapaVista\\CapaVista.csproj",
+  "expectedPackageFiles": [],
   "logs": []
 }

@@ -7,27 +7,14 @@
   "targets": {
     ".NETCoreApp,Version=v6.0": {
       "CapaVista/1.0.0": {
-        "dependencies": {
-          "ApiRestTarjetaCredito": "1.0.0"
-        },
         "runtime": {
           "CapaVista.dll": {}
-        }
-      },
-      "ApiRestTarjetaCredito/1.0.0": {
-        "runtime": {
-          "ApiRestTarjetaCredito.dll": {}
         }
       }
     }
   },
   "libraries": {
     "CapaVista/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "ApiRestTarjetaCredito/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

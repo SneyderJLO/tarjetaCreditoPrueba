@@ -3,3 +3,8 @@ C:\Users\usrTechsoft\source\repos\TarjetaCreditoApi\obj\Debug\net6.0-windows\Tar
 C:\Users\usrTechsoft\source\repos\TarjetaCreditoApi\obj\Debug\net6.0-windows\TarjetaCreditoApi.AssemblyInfoInputs.cache
 C:\Users\usrTechsoft\source\repos\TarjetaCreditoApi\obj\Debug\net6.0-windows\TarjetaCreditoApi.AssemblyInfo.cs
 C:\Users\usrTechsoft\source\repos\TarjetaCreditoApi\obj\Debug\net6.0-windows\TarjetaCreditoApi.csproj.CoreCompileInputs.cache
+C:\Users\usrTechsoft\source\repos\TarjetaCreditoBecarios\TarjetaCreditoApi\obj\Debug\net6.0-windows\TarjetaCreditoApi.csproj.AssemblyReference.cache
+C:\Users\usrTechsoft\source\repos\TarjetaCreditoBecarios\TarjetaCreditoApi\obj\Debug\net6.0-windows\TarjetaCreditoApi.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\usrTechsoft\source\repos\TarjetaCreditoBecarios\TarjetaCreditoApi\obj\Debug\net6.0-windows\TarjetaCreditoApi.AssemblyInfoInputs.cache
+C:\Users\usrTechsoft\source\repos\TarjetaCreditoBecarios\TarjetaCreditoApi\obj\Debug\net6.0-windows\TarjetaCreditoApi.AssemblyInfo.cs
+C:\Users\usrTechsoft\source\repos\TarjetaCreditoBecarios\TarjetaCreditoApi\obj\Debug\net6.0-windows\TarjetaCreditoApi.csproj.CoreCompileInputs.cache

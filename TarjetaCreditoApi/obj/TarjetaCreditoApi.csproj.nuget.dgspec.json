@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\usrTechsoft\\source\\repos\\TarjetaCreditoApi\\TarjetaCreditoApi.csproj": {}
+    "C:\\Users\\usrTechsoft\\source\\repos\\TarjetaCreditoBecarios\\TarjetaCreditoApi\\TarjetaCreditoApi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\usrTechsoft\\source\\repos\\TarjetaCreditoApi\\TarjetaCreditoApi.csproj": {
+    "C:\\Users\\usrTechsoft\\source\\repos\\TarjetaCreditoBecarios\\TarjetaCreditoApi\\TarjetaCreditoApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\usrTechsoft\\source\\repos\\TarjetaCreditoApi\\TarjetaCreditoApi.csproj",
+        "projectUniqueName": "C:\\Users\\usrTechsoft\\source\\repos\\TarjetaCreditoBecarios\\TarjetaCreditoApi\\TarjetaCreditoApi.csproj",
         "projectName": "TarjetaCreditoApi",
-        "projectPath": "C:\\Users\\usrTechsoft\\source\\repos\\TarjetaCreditoApi\\TarjetaCreditoApi.csproj",
+        "projectPath": "C:\\Users\\usrTechsoft\\source\\repos\\TarjetaCreditoBecarios\\TarjetaCreditoApi\\TarjetaCreditoApi.csproj",
         "packagesPath": "C:\\Users\\usrTechsoft\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\usrTechsoft\\source\\repos\\TarjetaCreditoApi\\obj\\",
+        "outputPath": "C:\\Users\\usrTechsoft\\source\\repos\\TarjetaCreditoBecarios\\TarjetaCreditoApi\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
