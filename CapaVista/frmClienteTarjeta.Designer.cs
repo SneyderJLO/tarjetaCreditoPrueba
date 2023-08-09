@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmClienteTarjeta));
             panelContainer = new Panel();
-            button1 = new Button();
             pictureBox2 = new PictureBox();
             label3 = new Label();
             label1 = new Label();
@@ -51,7 +50,6 @@
             // panelContainer
             // 
             panelContainer.BackColor = Color.FromArgb(27, 38, 59);
-            panelContainer.Controls.Add(button1);
             panelContainer.Controls.Add(pictureBox2);
             panelContainer.Controls.Add(label3);
             panelContainer.Controls.Add(label1);
@@ -61,16 +59,6 @@
             panelContainer.Name = "panelContainer";
             panelContainer.Size = new Size(833, 102);
             panelContainer.TabIndex = 0;
-            // 
-            // button1
-            // 
-            button1.Location = new Point(658, 46);
-            button1.Name = "button1";
-            button1.Size = new Size(75, 23);
-            button1.TabIndex = 6;
-            button1.Text = "button1";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
             // 
             // pictureBox2
             // 
@@ -118,6 +106,7 @@
             txtCedula.Size = new Size(209, 21);
             txtCedula.TabIndex = 1;
             txtCedula.TextAlign = HorizontalAlignment.Center;
+            txtCedula.KeyPress += txtCedula_KeyPress;
             // 
             // pictureBox1
             // 
@@ -208,6 +197,5 @@
         private Panel panel2;
         private Label label3;
         private PictureBox pictureBox2;
-        private Button button1;
     }
 }
