@@ -10,6 +10,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TarjetaCreditoApi.Conexion;
+using System.Data.SqlClient;
+using Microsoft.AspNetCore.Http.Extensions;
+using Microsoft.Extensions.Hosting;
+
 namespace CapaVista
 {
     public partial class frmClienteTarjeta : Form
@@ -22,6 +27,21 @@ namespace CapaVista
 
         private void label1_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private async void button1_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+               
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + "");
+            }
 
         }
     }

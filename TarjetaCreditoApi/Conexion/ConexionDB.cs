@@ -13,7 +13,7 @@
 
         }
 
-        public string ConexionMSQL()
+        public string ConexionSQLSERVER()
         {
             return rutaConexion;
         }

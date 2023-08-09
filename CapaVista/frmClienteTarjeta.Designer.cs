@@ -37,6 +37,7 @@
             pictureBox1 = new PictureBox();
             dtgDatosUsuarios = new DataGridView();
             panel1 = new Panel();
+            button1 = new Button();
             panel2 = new Panel();
             label2 = new Label();
             panelContainer.SuspendLayout();
@@ -50,6 +51,7 @@
             // panelContainer
             // 
             panelContainer.BackColor = Color.FromArgb(27, 38, 59);
+            panelContainer.Controls.Add(button1);
             panelContainer.Controls.Add(pictureBox2);
             panelContainer.Controls.Add(label3);
             panelContainer.Controls.Add(label1);
@@ -104,7 +106,7 @@
             txtCedula.Location = new Point(403, 48);
             txtCedula.Name = "txtCedula";
             txtCedula.Size = new Size(209, 21);
-            txtCedula.TabIndex = 2;
+            txtCedula.TabIndex = 1;
             txtCedula.TextAlign = HorizontalAlignment.Center;
             // 
             // pictureBox1
@@ -122,10 +124,10 @@
             dtgDatosUsuarios.BackgroundColor = Color.FromArgb(224, 225, 221);
             dtgDatosUsuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dtgDatosUsuarios.Dock = DockStyle.Right;
-            dtgDatosUsuarios.Location = new Point(198, 102);
+            dtgDatosUsuarios.Location = new Point(197, 102);
             dtgDatosUsuarios.Name = "dtgDatosUsuarios";
             dtgDatosUsuarios.RowTemplate.Height = 25;
-            dtgDatosUsuarios.Size = new Size(635, 348);
+            dtgDatosUsuarios.Size = new Size(636, 348);
             dtgDatosUsuarios.TabIndex = 1;
             // 
             // panel1
@@ -138,6 +140,16 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(200, 348);
             panel1.TabIndex = 2;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(658, 46);
+            button1.Name = "button1";
+            button1.Size = new Size(75, 23);
+            button1.TabIndex = 6;
+            button1.Text = "button1";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // panel2
             // 
@@ -194,5 +206,6 @@
         private Panel panel2;
         private Label label3;
         private PictureBox pictureBox2;
+        private Button button1;
     }
 }
