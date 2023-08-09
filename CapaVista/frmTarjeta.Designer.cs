@@ -32,23 +32,23 @@
             panel1 = new Panel();
             panel2 = new Panel();
             pictureBox1 = new PictureBox();
-            label2 = new Label();
+            lblConfirm = new Label();
             pictureBox2 = new PictureBox();
             panelContainer = new Panel();
             panel3 = new Panel();
-            label1 = new Label();
+            lblNombreCliente = new Label();
             panel4 = new Panel();
             panel6 = new Panel();
             lblCVV = new Label();
-            lblNumero = new Label();
+            txtTarjeta = new Label();
             lblNombre = new Label();
             lblNombreBanco = new Label();
-            LBLvISA = new Label();
+            lblCVC = new Label();
             labelfECHA = new Label();
             pctCard = new PictureBox();
             panel5 = new Panel();
             pictureBox4 = new PictureBox();
-            label3 = new Label();
+            lblGenerar = new Label();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -70,13 +70,13 @@
             panel1.Dock = DockStyle.Left;
             panel1.Location = new Point(0, 107);
             panel1.Name = "panel1";
-            panel1.Size = new Size(200, 344);
+            panel1.Size = new Size(200, 382);
             panel1.TabIndex = 4;
             // 
             // panel2
             // 
             panel2.Controls.Add(pictureBox1);
-            panel2.Controls.Add(label2);
+            panel2.Controls.Add(lblConfirm);
             panel2.Dock = DockStyle.Top;
             panel2.Location = new Point(0, 0);
             panel2.Name = "panel2";
@@ -93,17 +93,17 @@
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             // 
-            // label2
+            // lblConfirm
             // 
-            label2.Cursor = Cursors.Hand;
-            label2.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.ForeColor = Color.FromArgb(224, 225, 221);
-            label2.Location = new Point(44, 23);
-            label2.Name = "label2";
-            label2.Size = new Size(131, 26);
-            label2.TabIndex = 5;
-            label2.Text = "Confirmar cambios";
-            label2.TextAlign = ContentAlignment.MiddleLeft;
+            lblConfirm.Cursor = Cursors.Hand;
+            lblConfirm.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            lblConfirm.ForeColor = Color.FromArgb(224, 225, 221);
+            lblConfirm.Location = new Point(44, 23);
+            lblConfirm.Name = "lblConfirm";
+            lblConfirm.Size = new Size(131, 26);
+            lblConfirm.TabIndex = 5;
+            lblConfirm.Text = "Confirmar cambios";
+            lblConfirm.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // pictureBox2
             // 
@@ -119,7 +119,7 @@
             // 
             panelContainer.BackColor = Color.FromArgb(27, 38, 59);
             panelContainer.Controls.Add(panel3);
-            panelContainer.Controls.Add(label1);
+            panelContainer.Controls.Add(lblNombreCliente);
             panelContainer.Dock = DockStyle.Top;
             panelContainer.Location = new Point(0, 0);
             panelContainer.Name = "panelContainer";
@@ -136,42 +136,41 @@
             panel3.Size = new Size(200, 107);
             panel3.TabIndex = 6;
             // 
-            // label1
+            // lblNombreCliente
             // 
-            label1.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
-            label1.ForeColor = Color.FromArgb(224, 225, 221);
-            label1.Location = new Point(201, 33);
-            label1.Name = "label1";
-            label1.Size = new Size(501, 42);
-            label1.TabIndex = 4;
-            label1.Text = "Neysser tenemea lojano";
-            label1.TextAlign = ContentAlignment.MiddleRight;
+            lblNombreCliente.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
+            lblNombreCliente.ForeColor = Color.FromArgb(224, 225, 221);
+            lblNombreCliente.Location = new Point(201, 33);
+            lblNombreCliente.Name = "lblNombreCliente";
+            lblNombreCliente.Size = new Size(501, 42);
+            lblNombreCliente.TabIndex = 4;
+            lblNombreCliente.TextAlign = ContentAlignment.MiddleRight;
             // 
             // panel4
             // 
-            panel4.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             panel4.BackColor = Color.FromArgb(27, 38, 59);
             panel4.BorderStyle = BorderStyle.FixedSingle;
             panel4.Controls.Add(panel6);
             panel4.Controls.Add(panel5);
-            panel4.Location = new Point(200, 87);
+            panel4.Dock = DockStyle.Fill;
+            panel4.Location = new Point(200, 107);
             panel4.Name = "panel4";
-            panel4.Size = new Size(540, 383);
+            panel4.Size = new Size(540, 382);
             panel4.TabIndex = 5;
             // 
             // panel6
             // 
             panel6.Anchor = AnchorStyles.None;
             panel6.Controls.Add(lblCVV);
-            panel6.Controls.Add(lblNumero);
+            panel6.Controls.Add(txtTarjeta);
             panel6.Controls.Add(lblNombre);
             panel6.Controls.Add(lblNombreBanco);
-            panel6.Controls.Add(LBLvISA);
+            panel6.Controls.Add(lblCVC);
             panel6.Controls.Add(labelfECHA);
             panel6.Controls.Add(pctCard);
-            panel6.Location = new Point(69, 23);
+            panel6.Location = new Point(69, 42);
             panel6.Name = "panel6";
-            panel6.Size = new Size(431, 262);
+            panel6.Size = new Size(431, 272);
             panel6.TabIndex = 36;
             // 
             // lblCVV
@@ -180,26 +179,26 @@
             lblCVV.BackColor = Color.Transparent;
             lblCVV.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
             lblCVV.ForeColor = Color.FromArgb(224, 225, 221);
-            lblCVV.Location = new Point(313, 98);
+            lblCVV.Location = new Point(313, 103);
             lblCVV.Name = "lblCVV";
             lblCVV.Size = new Size(38, 25);
             lblCVV.TabIndex = 6;
             lblCVV.Text = "CVV:";
             lblCVV.TextAlign = ContentAlignment.MiddleLeft;
             // 
-            // lblNumero
+            // txtTarjeta
             // 
-            lblNumero.Anchor = AnchorStyles.None;
-            lblNumero.BackColor = Color.Transparent;
-            lblNumero.FlatStyle = FlatStyle.Popup;
-            lblNumero.Font = new Font("Courier New", 21.75F, FontStyle.Italic, GraphicsUnit.Point);
-            lblNumero.ForeColor = Color.White;
-            lblNumero.Location = new Point(30, 158);
-            lblNumero.Name = "lblNumero";
-            lblNumero.Size = new Size(389, 36);
-            lblNumero.TabIndex = 32;
-            lblNumero.Text = "000000000000000";
-            lblNumero.TextAlign = ContentAlignment.MiddleLeft;
+            txtTarjeta.Anchor = AnchorStyles.None;
+            txtTarjeta.BackColor = Color.Transparent;
+            txtTarjeta.FlatStyle = FlatStyle.Popup;
+            txtTarjeta.Font = new Font("Courier New", 21.75F, FontStyle.Italic, GraphicsUnit.Point);
+            txtTarjeta.ForeColor = Color.White;
+            txtTarjeta.Location = new Point(30, 163);
+            txtTarjeta.Name = "txtTarjeta";
+            txtTarjeta.Size = new Size(389, 36);
+            txtTarjeta.TabIndex = 32;
+            txtTarjeta.Text = "000000000000000";
+            txtTarjeta.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // lblNombre
             // 
@@ -208,7 +207,7 @@
             lblNombre.FlatStyle = FlatStyle.Popup;
             lblNombre.Font = new Font("Segoe UI Emoji", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             lblNombre.ForeColor = Color.White;
-            lblNombre.Location = new Point(39, 214);
+            lblNombre.Location = new Point(39, 219);
             lblNombre.Name = "lblNombre";
             lblNombre.Size = new Size(164, 25);
             lblNombre.TabIndex = 35;
@@ -222,58 +221,57 @@
             lblNombreBanco.FlatStyle = FlatStyle.Flat;
             lblNombreBanco.Font = new Font("Segoe UI Emoji", 18F, FontStyle.Bold, GraphicsUnit.Point);
             lblNombreBanco.ForeColor = Color.White;
-            lblNombreBanco.Location = new Point(30, 26);
+            lblNombreBanco.Location = new Point(30, 31);
             lblNombreBanco.Name = "lblNombreBanco";
             lblNombreBanco.Size = new Size(351, 36);
             lblNombreBanco.TabIndex = 28;
             lblNombreBanco.Text = "Banco del Pacífico";
             lblNombreBanco.TextAlign = ContentAlignment.MiddleLeft;
             // 
-            // LBLvISA
+            // lblCVC
             // 
-            LBLvISA.Anchor = AnchorStyles.None;
-            LBLvISA.BackColor = Color.Transparent;
-            LBLvISA.FlatStyle = FlatStyle.Popup;
-            LBLvISA.Font = new Font("Segoe UI Emoji", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
-            LBLvISA.ForeColor = Color.White;
-            LBLvISA.Location = new Point(357, 98);
-            LBLvISA.Name = "LBLvISA";
-            LBLvISA.Size = new Size(56, 27);
-            LBLvISA.TabIndex = 34;
-            LBLvISA.Text = "b";
-            LBLvISA.TextAlign = ContentAlignment.MiddleLeft;
+            lblCVC.Anchor = AnchorStyles.None;
+            lblCVC.BackColor = Color.Transparent;
+            lblCVC.FlatStyle = FlatStyle.Popup;
+            lblCVC.Font = new Font("Segoe UI Emoji", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            lblCVC.ForeColor = Color.White;
+            lblCVC.Location = new Point(357, 103);
+            lblCVC.Name = "lblCVC";
+            lblCVC.Size = new Size(56, 27);
+            lblCVC.TabIndex = 34;
+            lblCVC.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // labelfECHA
             // 
             labelfECHA.Anchor = AnchorStyles.None;
             labelfECHA.BackColor = Color.Transparent;
             labelfECHA.FlatStyle = FlatStyle.Popup;
-            labelfECHA.Font = new Font("Segoe UI Emoji", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            labelfECHA.Font = new Font("Segoe UI Emoji", 9.75F, FontStyle.Italic, GraphicsUnit.Point);
             labelfECHA.ForeColor = Color.White;
-            labelfECHA.Location = new Point(209, 214);
+            labelfECHA.Location = new Point(235, 212);
             labelfECHA.Name = "labelfECHA";
-            labelfECHA.Size = new Size(79, 25);
+            labelfECHA.Size = new Size(79, 32);
             labelfECHA.TabIndex = 33;
             labelfECHA.Text = "00/00";
-            labelfECHA.TextAlign = ContentAlignment.MiddleCenter;
+            labelfECHA.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // pctCard
             // 
-            pctCard.Anchor = AnchorStyles.None;
+            pctCard.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
             pctCard.Image = (Image)resources.GetObject("pctCard.Image");
-            pctCard.Location = new Point(3, 0);
+            pctCard.Location = new Point(0, 2);
             pctCard.Name = "pctCard";
-            pctCard.Size = new Size(428, 256);
+            pctCard.Size = new Size(428, 267);
             pctCard.TabIndex = 0;
             pctCard.TabStop = false;
             // 
             // panel5
             // 
-            panel5.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             panel5.BackColor = Color.FromArgb(27, 38, 59);
             panel5.Controls.Add(pictureBox4);
-            panel5.Controls.Add(label3);
-            panel5.Location = new Point(0, 303);
+            panel5.Controls.Add(lblGenerar);
+            panel5.Dock = DockStyle.Bottom;
+            panel5.Location = new Point(0, 320);
             panel5.Name = "panel5";
             panel5.Size = new Size(538, 60);
             panel5.TabIndex = 1;
@@ -288,27 +286,30 @@
             pictureBox4.TabIndex = 6;
             pictureBox4.TabStop = false;
             // 
-            // label3
+            // lblGenerar
             // 
-            label3.Cursor = Cursors.Hand;
-            label3.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.ForeColor = Color.FromArgb(224, 225, 221);
-            label3.Location = new Point(249, 16);
-            label3.Name = "label3";
-            label3.Size = new Size(123, 26);
-            label3.TabIndex = 6;
-            label3.Text = "Generar valores";
-            label3.TextAlign = ContentAlignment.MiddleLeft;
+            lblGenerar.Cursor = Cursors.Hand;
+            lblGenerar.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            lblGenerar.ForeColor = Color.FromArgb(224, 225, 221);
+            lblGenerar.Location = new Point(249, 16);
+            lblGenerar.Name = "lblGenerar";
+            lblGenerar.Size = new Size(123, 26);
+            lblGenerar.TabIndex = 6;
+            lblGenerar.Text = "Generar valores";
+            lblGenerar.TextAlign = ContentAlignment.MiddleLeft;
+            lblGenerar.Click += label3_Click;
             // 
             // frmTarjeta
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(740, 451);
+            ClientSize = new Size(740, 489);
             Controls.Add(panel4);
             Controls.Add(panel1);
             Controls.Add(panelContainer);
+            MaximizeBox = false;
             Name = "frmTarjeta";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "frmTarjeta";
             Load += frmTarjeta_Load;
             panel1.ResumeLayout(false);
@@ -330,21 +331,21 @@
         private Panel panel1;
         private Panel panel2;
         private PictureBox pictureBox1;
-        private Label label2;
+        private Label lblConfirm;
         private PictureBox pictureBox2;
         private Panel panelContainer;
-        private Label label1;
+        private Label lblNombreCliente;
         private Panel panel3;
         private Panel panel4;
         private Panel panel5;
-        private Label label3;
+        private Label lblGenerar;
         private PictureBox pictureBox4;
         private PictureBox pctCard;
         private Label lblNombreBanco;
         private Label lblNombre;
         private Label labelfECHA;
-        private Label lblNumero;
-        private Label LBLvISA;
+        private Label txtTarjeta;
+        private Label lblCVC;
         private Label lblCVV;
         private Panel panel6;
         private PictureBox pictureBox3;

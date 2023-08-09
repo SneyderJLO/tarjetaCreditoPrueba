@@ -30,19 +30,20 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmClienteTarjeta));
             panelContainer = new Panel();
+            button1 = new Button();
             pictureBox2 = new PictureBox();
             label3 = new Label();
             label1 = new Label();
             txtCedula = new TextBox();
             pictureBox1 = new PictureBox();
-            dtgDatosUsuarios = new DataGridView();
+            dtgDatosCliente = new DataGridView();
             panel1 = new Panel();
             panel2 = new Panel();
             label2 = new Label();
             panelContainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dtgDatosUsuarios).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dtgDatosCliente).BeginInit();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             SuspendLayout();
@@ -50,6 +51,7 @@
             // panelContainer
             // 
             panelContainer.BackColor = Color.FromArgb(27, 38, 59);
+            panelContainer.Controls.Add(button1);
             panelContainer.Controls.Add(pictureBox2);
             panelContainer.Controls.Add(label3);
             panelContainer.Controls.Add(label1);
@@ -59,6 +61,16 @@
             panelContainer.Name = "panelContainer";
             panelContainer.Size = new Size(833, 102);
             panelContainer.TabIndex = 0;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(658, 46);
+            button1.Name = "button1";
+            button1.Size = new Size(75, 23);
+            button1.TabIndex = 6;
+            button1.Text = "button1";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // pictureBox2
             // 
@@ -104,7 +116,7 @@
             txtCedula.Location = new Point(403, 48);
             txtCedula.Name = "txtCedula";
             txtCedula.Size = new Size(209, 21);
-            txtCedula.TabIndex = 2;
+            txtCedula.TabIndex = 1;
             txtCedula.TextAlign = HorizontalAlignment.Center;
             // 
             // pictureBox1
@@ -117,16 +129,16 @@
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             // 
-            // dtgDatosUsuarios
+            // dtgDatosCliente
             // 
-            dtgDatosUsuarios.BackgroundColor = Color.FromArgb(224, 225, 221);
-            dtgDatosUsuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dtgDatosUsuarios.Dock = DockStyle.Right;
-            dtgDatosUsuarios.Location = new Point(198, 102);
-            dtgDatosUsuarios.Name = "dtgDatosUsuarios";
-            dtgDatosUsuarios.RowTemplate.Height = 25;
-            dtgDatosUsuarios.Size = new Size(635, 348);
-            dtgDatosUsuarios.TabIndex = 1;
+            dtgDatosCliente.BackgroundColor = Color.FromArgb(224, 225, 221);
+            dtgDatosCliente.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dtgDatosCliente.Dock = DockStyle.Right;
+            dtgDatosCliente.Location = new Point(197, 102);
+            dtgDatosCliente.Name = "dtgDatosCliente";
+            dtgDatosCliente.RowTemplate.Height = 25;
+            dtgDatosCliente.Size = new Size(636, 348);
+            dtgDatosCliente.TabIndex = 1;
             // 
             // panel1
             // 
@@ -160,6 +172,7 @@
             label2.TabIndex = 5;
             label2.Text = "Generar tarjeta";
             label2.TextAlign = ContentAlignment.MiddleLeft;
+            label2.Click += label2_Click;
             // 
             // frmClienteTarjeta
             // 
@@ -167,16 +180,17 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(833, 450);
             Controls.Add(panel1);
-            Controls.Add(dtgDatosUsuarios);
+            Controls.Add(dtgDatosCliente);
             Controls.Add(panelContainer);
             MaximizeBox = false;
             Name = "frmClienteTarjeta";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
             panelContainer.ResumeLayout(false);
             panelContainer.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dtgDatosUsuarios).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dtgDatosCliente).EndInit();
             panel1.ResumeLayout(false);
             panel2.ResumeLayout(false);
             ResumeLayout(false);
@@ -186,7 +200,7 @@
 
         private Panel panelContainer;
         private TextBox txtCedula;
-        private DataGridView dtgDatosUsuarios;
+        private DataGridView dtgDatosCliente;
         private Label label1;
         private PictureBox pictureBox1;
         private Panel panel1;
@@ -194,5 +208,6 @@
         private Panel panel2;
         private Label label3;
         private PictureBox pictureBox2;
+        private Button button1;
     }
 }
