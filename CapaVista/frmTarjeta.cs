@@ -33,6 +33,7 @@ namespace CapaVista
             labelfECHA.Parent = pctCard;
             lblCVC.Parent = pctCard;
             lblCVV.Parent = pctCard;
+            lblConfirm.Enabled = false;
             lblNombreCliente.Text = "Lorem ipsum dolor sit amet consectetu";
         }
 
@@ -43,6 +44,9 @@ namespace CapaVista
             labelfECHA.Text = DateTime.Now.Month.ToString() + " / " + DateTime.Now.Year.ToString();
             lblNombre.Text = "Lorem ipsum dolor sit amet consectetu";
             lblCVC.Text = "12";
+            lblConfirm.Enabled = true;
+            lblGenerar.Enabled = false;
+
 
         }
 

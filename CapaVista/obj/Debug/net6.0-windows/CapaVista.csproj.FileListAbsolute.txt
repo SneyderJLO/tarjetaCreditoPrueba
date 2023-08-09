@@ -60,3 +60,4 @@ C:\Users\usrTechsoft\source\repos\TarjetaCreditoBecarios\CapaVista\bin\Debug\net
 C:\Users\usrTechsoft\source\repos\TarjetaCreditoBecarios\CapaVista\bin\Debug\net6.0-windows\runtimes\win-x86\native\sni.dll
 C:\Users\usrTechsoft\source\repos\TarjetaCreditoBecarios\CapaVista\bin\Debug\net6.0-windows\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
 C:\Users\usrTechsoft\source\repos\TarjetaCreditoBecarios\CapaVista\bin\Debug\net6.0-windows\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\usrTechsoft\source\repos\TarjetaCreditoBecarios\CapaVista\bin\Debug\net6.0-windows\Newtonsoft.Json.dll

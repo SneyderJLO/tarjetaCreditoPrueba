@@ -32,7 +32,7 @@
             panel1 = new Panel();
             panel2 = new Panel();
             pictureBox1 = new PictureBox();
-            label2 = new Label();
+            lblConfirm = new Label();
             pictureBox2 = new PictureBox();
             panelContainer = new Panel();
             panel3 = new Panel();
@@ -48,7 +48,7 @@
             pctCard = new PictureBox();
             panel5 = new Panel();
             pictureBox4 = new PictureBox();
-            label3 = new Label();
+            lblGenerar = new Label();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -76,7 +76,7 @@
             // panel2
             // 
             panel2.Controls.Add(pictureBox1);
-            panel2.Controls.Add(label2);
+            panel2.Controls.Add(lblConfirm);
             panel2.Dock = DockStyle.Top;
             panel2.Location = new Point(0, 0);
             panel2.Name = "panel2";
@@ -93,17 +93,17 @@
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             // 
-            // label2
+            // lblConfirm
             // 
-            label2.Cursor = Cursors.Hand;
-            label2.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.ForeColor = Color.FromArgb(224, 225, 221);
-            label2.Location = new Point(44, 23);
-            label2.Name = "label2";
-            label2.Size = new Size(131, 26);
-            label2.TabIndex = 5;
-            label2.Text = "Confirmar cambios";
-            label2.TextAlign = ContentAlignment.MiddleLeft;
+            lblConfirm.Cursor = Cursors.Hand;
+            lblConfirm.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            lblConfirm.ForeColor = Color.FromArgb(224, 225, 221);
+            lblConfirm.Location = new Point(44, 23);
+            lblConfirm.Name = "lblConfirm";
+            lblConfirm.Size = new Size(131, 26);
+            lblConfirm.TabIndex = 5;
+            lblConfirm.Text = "Confirmar cambios";
+            lblConfirm.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // pictureBox2
             // 
@@ -269,7 +269,7 @@
             // 
             panel5.BackColor = Color.FromArgb(27, 38, 59);
             panel5.Controls.Add(pictureBox4);
-            panel5.Controls.Add(label3);
+            panel5.Controls.Add(lblGenerar);
             panel5.Dock = DockStyle.Bottom;
             panel5.Location = new Point(0, 320);
             panel5.Name = "panel5";
@@ -286,18 +286,18 @@
             pictureBox4.TabIndex = 6;
             pictureBox4.TabStop = false;
             // 
-            // label3
+            // lblGenerar
             // 
-            label3.Cursor = Cursors.Hand;
-            label3.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.ForeColor = Color.FromArgb(224, 225, 221);
-            label3.Location = new Point(249, 16);
-            label3.Name = "label3";
-            label3.Size = new Size(123, 26);
-            label3.TabIndex = 6;
-            label3.Text = "Generar valores";
-            label3.TextAlign = ContentAlignment.MiddleLeft;
-            label3.Click += label3_Click;
+            lblGenerar.Cursor = Cursors.Hand;
+            lblGenerar.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            lblGenerar.ForeColor = Color.FromArgb(224, 225, 221);
+            lblGenerar.Location = new Point(249, 16);
+            lblGenerar.Name = "lblGenerar";
+            lblGenerar.Size = new Size(123, 26);
+            lblGenerar.TabIndex = 6;
+            lblGenerar.Text = "Generar valores";
+            lblGenerar.TextAlign = ContentAlignment.MiddleLeft;
+            lblGenerar.Click += label3_Click;
             // 
             // frmTarjeta
             // 
@@ -307,6 +307,7 @@
             Controls.Add(panel4);
             Controls.Add(panel1);
             Controls.Add(panelContainer);
+            MaximizeBox = false;
             Name = "frmTarjeta";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "frmTarjeta";
@@ -330,14 +331,14 @@
         private Panel panel1;
         private Panel panel2;
         private PictureBox pictureBox1;
-        private Label label2;
+        private Label lblConfirm;
         private PictureBox pictureBox2;
         private Panel panelContainer;
         private Label lblNombreCliente;
         private Panel panel3;
         private Panel panel4;
         private Panel panel5;
-        private Label label3;
+        private Label lblGenerar;
         private PictureBox pictureBox4;
         private PictureBox pctCard;
         private Label lblNombreBanco;

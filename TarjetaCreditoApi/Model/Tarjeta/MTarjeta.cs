@@ -4,7 +4,7 @@
     {
         public int idCliente { get; set; }
         public int idTarjeta { get; set; }
-        public string numeroTarjeta { get; set; }
+        public string? numeroTarjeta { get; set; }
         public DateTime fechaexpira { get; set; }
         public int cvv { get; set; }
         public decimal cupoAutorizado { get; set; }

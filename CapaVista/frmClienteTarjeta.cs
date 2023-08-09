@@ -14,6 +14,10 @@ using TarjetaCreditoApi.Conexion;
 using System.Data.SqlClient;
 using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.Extensions.Hosting;
+using TarjetaCreditoApi.ApiHelper;
+using TarjetaCreditoApi.Model;
+using TarjetaCreditoApi.Controllers;
+using Microsoft.AspNetCore.Mvc;
 
 namespace CapaVista
 {
@@ -35,14 +39,38 @@ namespace CapaVista
 
             try
             {
-               
+                if (txtCedula.Text != "")
+                {
+                    int idCliente = Convert.ToInt32(txtCedula.Text);
+                    string getRutaCliente = "https://localhost:7273/api/tarjetas?id=" + idCliente;
+                    //Creamos el listado de Posts a llenar
+                    List<MTarjeta> listado = new List<MTarjeta>();
+                    Reply oReply = new Reply();
+                    oReply = await Consumer.Execute<List<MTarjeta>>(getRutaCliente, methodHttp.GET, listado);
+
+                    this.dtgDatosCliente.DataSource = oReply.Data;
+
+                }
+                else
+                {
+                    MessageBox.Show("Debes ingresar un valor", "Error");
+                }
 
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message + "");
+                MessageBox.Show(ex + "");
             }
 
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+            frmTarjeta frmTarjeta = new frmTarjeta();
+            this.Hide();
+            frmTarjeta.ShowDialog(); // Muestra Form2 como un diálogo modal
+            this.Close(); // Cierra la aplicación cuando se cierre Form2 (si es necesario)
+            //frmTarjeta.Visible = true;
         }
     }
 }
