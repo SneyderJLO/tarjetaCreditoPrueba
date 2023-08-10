@@ -34,6 +34,7 @@
             label3 = new Label();
             label1 = new Label();
             txtCedula = new TextBox();
+            btn_actualizar = new Button();
             pictureBox1 = new PictureBox();
             dtgDatosCliente = new DataGridView();
             panel1 = new Panel();
@@ -57,8 +58,9 @@
             panelContainer.Dock = DockStyle.Top;
             panelContainer.Location = new Point(0, 0);
             panelContainer.Name = "panelContainer";
-            panelContainer.Size = new Size(833, 102);
+            panelContainer.Size = new Size(1034, 102);
             panelContainer.TabIndex = 0;
+            panelContainer.Paint += panelContainer_Paint;
             // 
             // pictureBox2
             // 
@@ -72,23 +74,25 @@
             // 
             // label3
             // 
-            label3.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            label3.Anchor = AnchorStyles.Right;
             label3.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             label3.ForeColor = Color.FromArgb(224, 224, 224);
-            label3.Location = new Point(403, 71);
+            label3.Location = new Point(332, 71);
             label3.Name = "label3";
-            label3.Size = new Size(209, 27);
+            label3.Size = new Size(481, 27);
             label3.TabIndex = 5;
             label3.Text = "________________________________________";
+            label3.TextAlign = ContentAlignment.MiddleCenter;
+            label3.Click += label3_Click;
             // 
             // label1
             // 
-            label1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            label1.Anchor = AnchorStyles.Right;
             label1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             label1.ForeColor = Color.FromArgb(224, 225, 221);
-            label1.Location = new Point(381, 9);
+            label1.Location = new Point(313, 9);
             label1.Name = "label1";
-            label1.Size = new Size(248, 34);
+            label1.Size = new Size(521, 34);
             label1.TabIndex = 4;
             label1.Text = "Ingrese el número de cédula";
             label1.TextAlign = ContentAlignment.MiddleCenter;
@@ -96,17 +100,32 @@
             // 
             // txtCedula
             // 
-            txtCedula.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            txtCedula.Anchor = AnchorStyles.Right;
             txtCedula.BackColor = Color.FromArgb(27, 38, 59);
             txtCedula.BorderStyle = BorderStyle.None;
             txtCedula.Font = new Font("Segoe UI Black", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
             txtCedula.ForeColor = SystemColors.Window;
-            txtCedula.Location = new Point(403, 48);
+            txtCedula.Location = new Point(475, 47);
             txtCedula.Name = "txtCedula";
-            txtCedula.Size = new Size(209, 21);
+            txtCedula.Size = new Size(199, 21);
             txtCedula.TabIndex = 1;
             txtCedula.TextAlign = HorizontalAlignment.Center;
+            txtCedula.TextChanged += txtCedula_TextChanged;
             txtCedula.KeyPress += txtCedula_KeyPress;
+            // 
+            // btn_actualizar
+            // 
+            btn_actualizar.BackColor = Color.FromArgb(224, 225, 221);
+            btn_actualizar.FlatStyle = FlatStyle.Popup;
+            btn_actualizar.Font = new Font("Segoe UI Emoji", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            btn_actualizar.ForeColor = Color.FromArgb(27, 38, 59);
+            btn_actualizar.Location = new Point(835, 418);
+            btn_actualizar.Name = "btn_actualizar";
+            btn_actualizar.Size = new Size(199, 32);
+            btn_actualizar.TabIndex = 6;
+            btn_actualizar.Text = "Actualizar Registros";
+            btn_actualizar.UseVisualStyleBackColor = false;
+            btn_actualizar.Click += btn_actualizar_Click;
             // 
             // pictureBox1
             // 
@@ -120,13 +139,14 @@
             // 
             // dtgDatosCliente
             // 
+            dtgDatosCliente.Anchor = AnchorStyles.Right;
             dtgDatosCliente.BackgroundColor = Color.FromArgb(224, 225, 221);
             dtgDatosCliente.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dtgDatosCliente.Dock = DockStyle.Right;
-            dtgDatosCliente.Location = new Point(197, 102);
+            dtgDatosCliente.GridColor = Color.FromArgb(224, 225, 221);
+            dtgDatosCliente.Location = new Point(174, 102);
             dtgDatosCliente.Name = "dtgDatosCliente";
             dtgDatosCliente.RowTemplate.Height = 25;
-            dtgDatosCliente.Size = new Size(636, 348);
+            dtgDatosCliente.Size = new Size(860, 310);
             dtgDatosCliente.TabIndex = 1;
             // 
             // panel1
@@ -167,7 +187,9 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(833, 450);
+            BackColor = Color.FromArgb(224, 225, 221);
+            ClientSize = new Size(1034, 450);
+            Controls.Add(btn_actualizar);
             Controls.Add(panel1);
             Controls.Add(dtgDatosCliente);
             Controls.Add(panelContainer);
@@ -188,7 +210,6 @@
         #endregion
 
         private Panel panelContainer;
-        private TextBox txtCedula;
         private DataGridView dtgDatosCliente;
         private Label label1;
         private PictureBox pictureBox1;
@@ -197,5 +218,7 @@
         private Panel panel2;
         private Label label3;
         private PictureBox pictureBox2;
+        public TextBox txtCedula;
+        private Button btn_actualizar;
     }
 }

@@ -47,5 +47,27 @@ namespace TarjetaCreditoApi.DatosTarjetaCredito
 
             return listTarjetas;
         }
+
+        public async Task insertarTarjeta(MTarjeta parametros)
+        {
+            using (var sql = new SqlConnection(conexion.ConexionSQLSERVER()))
+            {
+                using (var cmd = new SqlCommand("sp_insertarTarjeta", sql))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.AddWithValue("@idCliente", parametros.idCliente);
+                    //cmd.Parameters.AddWithValue("@idTarjeta", parametros.idTarjeta);
+                    cmd.Parameters.AddWithValue("@numeroTarjeta", parametros.numeroTarjeta);
+                    cmd.Parameters.AddWithValue("@fechaexpira", parametros.fechaexpira);
+                    cmd.Parameters.AddWithValue("@cvv", parametros.cvv);
+                    cmd.Parameters.AddWithValue("@cupoAutorizado", parametros.cupoAutorizado);
+                    cmd.Parameters.AddWithValue("@cupoUtilizado", parametros.cupoUtilizado);
+                    cmd.Parameters.AddWithValue("@cupoDisponible", parametros.cupoDisponible);
+                    await sql.OpenAsync();
+                    await cmd.ExecuteNonQueryAsync();
+                }
+            }
+        }
     }
 }

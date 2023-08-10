@@ -33,13 +33,10 @@
             panel2 = new Panel();
             pictureBox1 = new PictureBox();
             lblConfirm = new Label();
-            pictureBox2 = new PictureBox();
-            panelContainer = new Panel();
-            panel3 = new Panel();
-            lblNombreCliente = new Label();
+            cedula3 = new Label();
             panel4 = new Panel();
             panel6 = new Panel();
-            lblCVV = new Label();
+            lbl = new Label();
             txtTarjeta = new Label();
             lblNombre = new Label();
             lblNombreBanco = new Label();
@@ -49,17 +46,21 @@
             panel5 = new Panel();
             pictureBox4 = new PictureBox();
             lblGenerar = new Label();
+            lblNombreCliente = new Label();
+            panel3 = new Panel();
+            pictureBox2 = new PictureBox();
+            panelContainer = new Panel();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
-            panelContainer.SuspendLayout();
-            panel3.SuspendLayout();
             panel4.SuspendLayout();
             panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pctCard).BeginInit();
             panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
+            panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
+            panelContainer.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
@@ -68,9 +69,9 @@
             panel1.BorderStyle = BorderStyle.FixedSingle;
             panel1.Controls.Add(panel2);
             panel1.Dock = DockStyle.Left;
-            panel1.Location = new Point(0, 107);
+            panel1.Location = new Point(0, 85);
             panel1.Name = "panel1";
-            panel1.Size = new Size(200, 382);
+            panel1.Size = new Size(200, 395);
             panel1.TabIndex = 4;
             // 
             // panel2
@@ -104,47 +105,18 @@
             lblConfirm.TabIndex = 5;
             lblConfirm.Text = "Confirmar cambios";
             lblConfirm.TextAlign = ContentAlignment.MiddleLeft;
+            lblConfirm.Click += lblConfirm_Click;
             // 
-            // pictureBox2
+            // cedula3
             // 
-            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(1, -15);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(199, 123);
-            pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox2.TabIndex = 6;
-            pictureBox2.TabStop = false;
-            // 
-            // panelContainer
-            // 
-            panelContainer.BackColor = Color.FromArgb(27, 38, 59);
-            panelContainer.Controls.Add(panel3);
-            panelContainer.Controls.Add(lblNombreCliente);
-            panelContainer.Dock = DockStyle.Top;
-            panelContainer.Location = new Point(0, 0);
-            panelContainer.Name = "panelContainer";
-            panelContainer.Size = new Size(740, 107);
-            panelContainer.TabIndex = 3;
-            panelContainer.Paint += panelContainer_Paint;
-            // 
-            // panel3
-            // 
-            panel3.Controls.Add(pictureBox2);
-            panel3.Dock = DockStyle.Left;
-            panel3.Location = new Point(0, 0);
-            panel3.Name = "panel3";
-            panel3.Size = new Size(200, 107);
-            panel3.TabIndex = 6;
-            // 
-            // lblNombreCliente
-            // 
-            lblNombreCliente.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
-            lblNombreCliente.ForeColor = Color.FromArgb(224, 225, 221);
-            lblNombreCliente.Location = new Point(201, 33);
-            lblNombreCliente.Name = "lblNombreCliente";
-            lblNombreCliente.Size = new Size(501, 42);
-            lblNombreCliente.TabIndex = 4;
-            lblNombreCliente.TextAlign = ContentAlignment.MiddleRight;
+            cedula3.BackColor = Color.Transparent;
+            cedula3.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
+            cedula3.ForeColor = SystemColors.ButtonFace;
+            cedula3.Location = new Point(640, 40);
+            cedula3.Name = "cedula3";
+            cedula3.Size = new Size(88, 42);
+            cedula3.TabIndex = 6;
+            cedula3.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // panel4
             // 
@@ -153,38 +125,39 @@
             panel4.Controls.Add(panel6);
             panel4.Controls.Add(panel5);
             panel4.Dock = DockStyle.Fill;
-            panel4.Location = new Point(200, 107);
+            panel4.Location = new Point(200, 85);
             panel4.Name = "panel4";
-            panel4.Size = new Size(540, 382);
+            panel4.Size = new Size(532, 395);
             panel4.TabIndex = 5;
+            panel4.Paint += panel4_Paint;
             // 
             // panel6
             // 
             panel6.Anchor = AnchorStyles.None;
-            panel6.Controls.Add(lblCVV);
+            panel6.Controls.Add(lbl);
             panel6.Controls.Add(txtTarjeta);
             panel6.Controls.Add(lblNombre);
             panel6.Controls.Add(lblNombreBanco);
             panel6.Controls.Add(lblCVC);
             panel6.Controls.Add(labelfECHA);
             panel6.Controls.Add(pctCard);
-            panel6.Location = new Point(69, 42);
+            panel6.Location = new Point(52, 30);
             panel6.Name = "panel6";
             panel6.Size = new Size(431, 272);
             panel6.TabIndex = 36;
             // 
-            // lblCVV
+            // lbl
             // 
-            lblCVV.Anchor = AnchorStyles.None;
-            lblCVV.BackColor = Color.Transparent;
-            lblCVV.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
-            lblCVV.ForeColor = Color.FromArgb(224, 225, 221);
-            lblCVV.Location = new Point(313, 103);
-            lblCVV.Name = "lblCVV";
-            lblCVV.Size = new Size(38, 25);
-            lblCVV.TabIndex = 6;
-            lblCVV.Text = "CVV:";
-            lblCVV.TextAlign = ContentAlignment.MiddleLeft;
+            lbl.Anchor = AnchorStyles.None;
+            lbl.BackColor = Color.Transparent;
+            lbl.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            lbl.ForeColor = Color.FromArgb(224, 225, 221);
+            lbl.Location = new Point(313, 103);
+            lbl.Name = "lbl";
+            lbl.Size = new Size(38, 25);
+            lbl.TabIndex = 6;
+            lbl.Text = "CVV:";
+            lbl.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // txtTarjeta
             // 
@@ -211,7 +184,6 @@
             lblNombre.Name = "lblNombre";
             lblNombre.Size = new Size(164, 25);
             lblNombre.TabIndex = 35;
-            lblNombre.Text = "sadsad";
             lblNombre.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // lblNombreBanco
@@ -268,42 +240,88 @@
             // panel5
             // 
             panel5.BackColor = Color.FromArgb(27, 38, 59);
+            panel5.BorderStyle = BorderStyle.FixedSingle;
             panel5.Controls.Add(pictureBox4);
             panel5.Controls.Add(lblGenerar);
             panel5.Dock = DockStyle.Bottom;
-            panel5.Location = new Point(0, 320);
+            panel5.Location = new Point(0, 309);
             panel5.Name = "panel5";
-            panel5.Size = new Size(538, 60);
+            panel5.Size = new Size(530, 84);
             panel5.TabIndex = 1;
             // 
             // pictureBox4
             // 
+            pictureBox4.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             pictureBox4.Image = (Image)resources.GetObject("pictureBox4.Image");
-            pictureBox4.Location = new Point(210, 16);
+            pictureBox4.Location = new Point(184, 32);
             pictureBox4.Name = "pictureBox4";
-            pictureBox4.Size = new Size(33, 26);
+            pictureBox4.Size = new Size(31, 24);
             pictureBox4.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox4.TabIndex = 6;
             pictureBox4.TabStop = false;
             // 
             // lblGenerar
             // 
+            lblGenerar.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             lblGenerar.Cursor = Cursors.Hand;
             lblGenerar.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
             lblGenerar.ForeColor = Color.FromArgb(224, 225, 221);
-            lblGenerar.Location = new Point(249, 16);
+            lblGenerar.Location = new Point(223, 32);
             lblGenerar.Name = "lblGenerar";
-            lblGenerar.Size = new Size(123, 26);
+            lblGenerar.Size = new Size(121, 24);
             lblGenerar.TabIndex = 6;
             lblGenerar.Text = "Generar valores";
             lblGenerar.TextAlign = ContentAlignment.MiddleLeft;
             lblGenerar.Click += label3_Click;
             // 
+            // lblNombreCliente
+            // 
+            lblNombreCliente.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
+            lblNombreCliente.ForeColor = Color.FromArgb(224, 225, 221);
+            lblNombreCliente.Location = new Point(320, 40);
+            lblNombreCliente.Name = "lblNombreCliente";
+            lblNombreCliente.Size = new Size(314, 42);
+            lblNombreCliente.TabIndex = 4;
+            lblNombreCliente.TextAlign = ContentAlignment.MiddleRight;
+            // 
+            // panel3
+            // 
+            panel3.Controls.Add(pictureBox2);
+            panel3.Dock = DockStyle.Left;
+            panel3.Location = new Point(0, 0);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(200, 85);
+            panel3.TabIndex = 6;
+            // 
+            // pictureBox2
+            // 
+            pictureBox2.Dock = DockStyle.Fill;
+            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
+            pictureBox2.Location = new Point(0, 0);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(200, 85);
+            pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox2.TabIndex = 6;
+            pictureBox2.TabStop = false;
+            // 
+            // panelContainer
+            // 
+            panelContainer.BackColor = Color.FromArgb(27, 38, 59);
+            panelContainer.Controls.Add(cedula3);
+            panelContainer.Controls.Add(panel3);
+            panelContainer.Controls.Add(lblNombreCliente);
+            panelContainer.Dock = DockStyle.Top;
+            panelContainer.Location = new Point(0, 0);
+            panelContainer.Name = "panelContainer";
+            panelContainer.Size = new Size(732, 85);
+            panelContainer.TabIndex = 3;
+            panelContainer.Paint += panelContainer_Paint;
+            // 
             // frmTarjeta
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(740, 489);
+            ClientSize = new Size(732, 480);
             Controls.Add(panel4);
             Controls.Add(panel1);
             Controls.Add(panelContainer);
@@ -315,14 +333,14 @@
             panel1.ResumeLayout(false);
             panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
-            panelContainer.ResumeLayout(false);
-            panel3.ResumeLayout(false);
             panel4.ResumeLayout(false);
             panel6.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pctCard).EndInit();
             panel5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
+            panel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
+            panelContainer.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -334,6 +352,7 @@
         private Label lblConfirm;
         private PictureBox pictureBox2;
         private Panel panelContainer;
+        public Label cedula1;
         private Label lblNombreCliente;
         private Panel panel3;
         private Panel panel4;
@@ -349,5 +368,10 @@
         private Label lblCVV;
         private Panel panel6;
         private PictureBox pictureBox3;
+        private Label lbl;
+        public Label cedula;
+        private Label label1;
+        private TextBox textBox1;
+        public Label cedula3;
     }
 }
