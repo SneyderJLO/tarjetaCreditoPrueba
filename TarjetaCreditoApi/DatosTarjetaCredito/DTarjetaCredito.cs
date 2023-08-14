@@ -1,5 +1,6 @@
 ﻿using System.Data;
 using System.Data.SqlClient;
+using System.Data.SqlTypes;
 using TarjetaCreditoApi.Conexion;
 using TarjetaCreditoApi.Model;
 namespace TarjetaCreditoApi.DatosTarjetaCredito

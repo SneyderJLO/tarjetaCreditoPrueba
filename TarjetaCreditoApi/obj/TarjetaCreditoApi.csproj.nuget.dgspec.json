@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\usrTechsoft\\source\\repos\\TarjetaCreditoBecarios\\TarjetaCreditoApi\\TarjetaCreditoApi.csproj": {}
+    "C:\\Users\\kikin\\source\\repos\\tarjetaCreditoPrueba\\TarjetaCreditoApi\\TarjetaCreditoApi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\usrTechsoft\\source\\repos\\TarjetaCreditoBecarios\\TarjetaCreditoApi\\TarjetaCreditoApi.csproj": {
+    "C:\\Users\\kikin\\source\\repos\\tarjetaCreditoPrueba\\TarjetaCreditoApi\\TarjetaCreditoApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\usrTechsoft\\source\\repos\\TarjetaCreditoBecarios\\TarjetaCreditoApi\\TarjetaCreditoApi.csproj",
+        "projectUniqueName": "C:\\Users\\kikin\\source\\repos\\tarjetaCreditoPrueba\\TarjetaCreditoApi\\TarjetaCreditoApi.csproj",
         "projectName": "TarjetaCreditoApi",
-        "projectPath": "C:\\Users\\usrTechsoft\\source\\repos\\TarjetaCreditoBecarios\\TarjetaCreditoApi\\TarjetaCreditoApi.csproj",
-        "packagesPath": "C:\\Users\\usrTechsoft\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\usrTechsoft\\source\\repos\\TarjetaCreditoBecarios\\TarjetaCreditoApi\\obj\\",
+        "projectPath": "C:\\Users\\kikin\\source\\repos\\tarjetaCreditoPrueba\\TarjetaCreditoApi\\TarjetaCreditoApi.csproj",
+        "packagesPath": "C:\\Users\\kikin\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\kikin\\source\\repos\\tarjetaCreditoPrueba\\TarjetaCreditoApi\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\usrTechsoft\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\kikin\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],

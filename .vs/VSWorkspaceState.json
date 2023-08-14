@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\CapaVista",
+    "\\TarjetaCreditoApi"
   ],
-  "SelectedNode": "\\TarjetaCreditoBecarios.sln",
+  "SelectedNode": "\\CapaVista\\frmClienteTarjeta.cs",
   "PreviewInSolutionExplorer": false
 }

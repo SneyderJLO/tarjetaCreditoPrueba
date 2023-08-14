@@ -18,11 +18,16 @@ using TarjetaCreditoApi.ApiHelper;
 using TarjetaCreditoApi.Model;
 using TarjetaCreditoApi.Controllers;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace CapaVista
 {
     public partial class frmClienteTarjeta : Form
     {
+
+        public int idTarjeta { get; set; }
+        public string id { get; set; }
+
         public frmClienteTarjeta()
         {
             InitializeComponent();
@@ -51,9 +56,11 @@ namespace CapaVista
             {
                 frmTarjeta frmTarjeta = new frmTarjeta();
                 //this.Hide();
-                // frmTarjeta.ShowDialog(); // Muestra Form2 como un diálogo modal
+
                 frmTarjeta.cedula3.Text = txtCedula.Text;
-                frmTarjeta.Show();
+                frmTarjeta.ShowDialog(); // Muestra Form2 como un diálogo modal
+
+                // frmTarjeta.ShowDialog();
 
 
             }
@@ -65,28 +72,14 @@ namespace CapaVista
         {
             if (e.KeyChar == (char)13)
             {
-                mostrar();
+                cargarDatosCliente();
             }
         }
 
-        private void panelContainer_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtCedula_TextChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void btn_actualizar_Click(object sender, EventArgs e)
         {
-            mostrar();
+            cargarDatosCliente();
         }
         public async void mostrar()
         {
@@ -119,5 +112,78 @@ namespace CapaVista
             }
         }
 
+
+
+        private void dtgDatosCliente_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0) // Asegurarse de que no se hace clic en los encabezados
+            {
+                DataGridViewRow selectedRow = dtgDatosCliente.Rows[e.RowIndex];
+                dtgDatosCliente.Rows[e.RowIndex].Selected = true;
+                // Obtener valores de las celdas
+                id = selectedRow.Cells["idCliente"].Value.ToString();
+                idTarjeta = int.Parse(selectedRow.Cells["idTarjeta"].Value.ToString());
+                string? numeroTarjeta = selectedRow.Cells["numeroTarjeta"].Value.ToString();
+                DateTime fechaExpira = DateTime.Parse(selectedRow.Cells["fechaexpira"].Value.ToString());
+                string? saldoDisponible = selectedRow.Cells["cupoDisponible"].Value.ToString();
+                string? cvc = selectedRow.Cells["cvv"].Value.ToString();
+                this.lblNumeroTarjeta.Text = numeroTarjeta;
+                this.lblFecha.Text = fechaExpira.Month + "/" + fechaExpira.Year;
+                this.lblCVV.Text = cvc;
+                this.lblSaldoDisponible.Text = saldoDisponible;
+                // Hacer lo que necesites con los valores obtenidos
+            }
+        }
+
+
+
+        private async void cargarDatosCliente()
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                // Configura la base URL de tu API
+                client.BaseAddress = new Uri("https://localhost:7273/");
+                try
+                {
+                    // Realiza la llamada GET a la API y espera la respuesta
+                    HttpResponseMessage response = await client.GetAsync("api/tarjetas/tarjetas?id=" + txtCedula.Text);
+                    // Verifica si la respuesta es exitosa
+                    if (response.IsSuccessStatusCode)
+                    {
+                        // Lee el contenido de la respuesta como una cadena JSON
+                        string responseBody = await response.Content.ReadAsStringAsync();
+                        // Aquí puedes procesar o mostrar el responseBody como necesites
+                        List<MTarjeta> tarjetas = JsonConvert.DeserializeObject<List<MTarjeta>>(responseBody);
+                        // Asigna la lista de tarjetas al DataGridView
+                        if (tarjetas.Count > 0)
+                        {
+                            dtgDatosCliente.DataSource = tarjetas;
+                        }
+                        else
+                        {
+                            this.dtgDatosCliente.DataSource = null;
+                            this.dtgDatosCliente.Rows.Clear();
+                        }
+
+                    }
+                    else
+                    {
+                        // Si la respuesta no es exitosa, muestra un mensaje de error
+                        dtgDatosCliente.DataSource = "Error en la solicitud: " + response.ReasonPhrase;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    // Manejo de excepciones en caso de problemas de conexión u otros errores
+                    MessageBox.Show("Error: " + ex.Message);
+                }
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.OK;
+            Close();
+        }
     }
 }

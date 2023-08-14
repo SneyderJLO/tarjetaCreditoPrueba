@@ -1,4 +1,8 @@
-﻿namespace TarjetaCreditoApi.Model
+﻿using Microsoft.VisualBasic;
+using System.Data;
+using System.Data.SqlTypes;
+
+namespace TarjetaCreditoApi.Model
 {
     public class MTarjeta
     {

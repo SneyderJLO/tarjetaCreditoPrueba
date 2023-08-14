@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http.Extensions;
+﻿using System;
+using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.Extensions.Hosting;
 using System;
 using System.Collections.Generic;
@@ -13,14 +14,15 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using TarjetaCreditoApi.ApiHelper;
 using TarjetaCreditoApi.Model;
-
+using System.Data.SqlTypes;
+using Newtonsoft.Json.Linq;
 
 namespace CapaVista
 {
 
     public partial class frmTarjeta : Form
     {
-        public const string rutaApi = "https://localhost:7273/api/tarjetas"; // Reemplaza con la URL de tu API
+        public const string rutaApi = "https://localhost:7273/api/tarjetas/tarjeta"; // Reemplaza con la URL de tu API
         public frmTarjeta()
         {
             this.SetStyle(ControlStyles.SupportsTransparentBackColor, true);
@@ -42,20 +44,15 @@ namespace CapaVista
             labelfECHA.Parent = pctCard;
             lblCVC.Parent = pctCard;
             lbl.Parent = pctCard;
+            comboBox1.SelectedIndex = 0;
+            comboBox2.SelectedIndex = 0;
             //lblConfirm.Enabled = false;
-            lblNombreCliente.Text = "Id Cliente:";
+            //lblNombreCliente.Text = "Id Cliente:";
         }
 
         private void label3_Click(object sender, EventArgs e)
         {
-            long tarjeta = GenerarNumeroAleatorio();
-            int ultimoDigito = CalcularDigitoVerificador(tarjeta.ToString());
-            txtTarjeta.Text = tarjeta.ToString() + ultimoDigito;
-            labelfECHA.Text = DateTime.Now.Month.ToString() + " / " + DateTime.Now.Year.ToString();
-            lblNombre.Text = "Lorem ipsum dolor sit amet consectetu";
-            lblCVC.Text = "144";
-            //lblConfirm.Enabled = true;
-            //lblGenerar.Enabled = false;
+
 
 
         }
@@ -98,27 +95,78 @@ namespace CapaVista
 
         private async void lblConfirm_Click(object sender, EventArgs e)
         {
-            confirmar();
-            this.Close();
-
 
         }
+
+
+        private async void confirmarTarjeta()
+        {
+            using (HttpClient client = new HttpClient())
+            {
+
+                try
+                {
+                    decimal saldoAutorizado = decimal.Parse(lblSaldoAutorizado.Text);
+                    decimal saldoUtilizado = saldoTarjeta(saldoAutorizado);
+                    decimal saldoDisponible = saldoAutorizado - saldoUtilizado;
+                    DateTime fechaExpira = DateTime.Parse(labelfECHA.Text);
+
+                    // Crear un objeto para enviar en el cuerpo de la solicitud POST
+                    MTarjeta postData = new MTarjeta()
+                    {
+                        idCliente = int.Parse(cedula3.Text),
+                        // idTarjeta = 99,
+                        numeroTarjeta = txtTarjeta.Text,
+
+                        fechaexpira = fechaExpira,
+                        cvv = int.Parse(lblCVC.Text),
+                        cupoAutorizado = saldoAutorizado,
+                        cupoUtilizado = saldoUtilizado,
+                        cupoDisponible = saldoDisponible
+                    };
+
+                    HttpResponseMessage response = await client.PostAsJsonAsync(rutaApi, postData);
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        MessageBox.Show("Tarjeta insertada correctamente.");
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error en la solicitud POST: " + response.StatusCode);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex);
+                }
+            }
+        }
+
+
         public async void confirmar()
         {
+
+            decimal saldoAutorizado = decimal.Parse(lblSaldoAutorizado.Text);
+            decimal saldoUtilizado = saldoTarjeta(saldoAutorizado);
+            decimal saldoDisponible = saldoAutorizado - saldoUtilizado;
             try
             {
+                DateTime fechaExpira = DateTime.Parse(labelfECHA.Text);
                 MTarjeta datosTarjeta = new MTarjeta()
                 {
 
 
                     idCliente = int.Parse(cedula3.Text),
-                   // idTarjeta = 99,
+                    // idTarjeta = 99,
                     numeroTarjeta = txtTarjeta.Text,
-                    fechaexpira = DateTime.Now,
+
+                    fechaexpira = fechaExpira,
                     cvv = int.Parse(lblCVC.Text),
-                    cupoAutorizado = 12,
-                    cupoUtilizado = 12,
-                    cupoDisponible = 0
+                    cupoAutorizado = saldoAutorizado,
+                    cupoUtilizado = saldoUtilizado,
+                    cupoDisponible = saldoDisponible
                 };
                 Reply oReply = new Reply();
 
@@ -141,8 +189,95 @@ namespace CapaVista
             }
         }
 
+        public int generarCVC()
+        {
+            Random random = new Random();
+            return random.Next(100, 999);
+        }
+
+        public decimal saldoTarjeta()
+        {
+            Random random = new Random();
+            int value = random.Next(1, 1000);
+
+            return value;
+
+        }
+
+        public decimal saldoTarjeta(decimal valorAutorizado)
+        {
+            Random random = new Random();
+            decimal saldoUtilizado = random.Next((int)valorAutorizado);
+            return saldoUtilizado;
+
+        }
+
         private void panel4_Paint(object sender, PaintEventArgs e)
         {
+
+        }
+
+        public DateTime GenerateRandomDate()
+        {
+            Random random = new Random();
+            DateTime startDate = DateTime.Now.AddYears(-1); // Hace un año desde hoy
+            DateTime endDate = DateTime.Now;
+
+            TimeSpan timeSpan = endDate - startDate;
+            int randomDays = random.Next(0, (int)timeSpan.TotalDays);
+            DateTime randomDate = startDate.AddDays(randomDays);
+            return randomDate;
+        }
+
+        private void panel7_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void lblCVC_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void materialLabel1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void materialSingleLineTextField1_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            long tarjeta = GenerarNumeroAleatorio();
+            int ultimoDigito = CalcularDigitoVerificador(tarjeta.ToString());
+            txtTarjeta.Text = tarjeta.ToString() + ultimoDigito;
+            labelfECHA.Text = GenerateRandomDate().ToString();
+            lblNombre.Text = "Cliente-cliente-cliente";
+            lblCVC.Text = generarCVC().ToString();
+            btnConfirmar.Enabled = true;
+            btnGenerar.Enabled = false;
+            lblSaldoAutorizado.Text = saldoTarjeta().ToString();
+
+            txtNombre.Text = lblNombre.Text;
+            lblTarjeta.Text = txtTarjeta.Text;
+            lblCodigoCvv.Text = lblCVC.Text;
+            //  panel2.Enabled = false;
+
+            //lblConfirm.Enabled = true;
+            //lblGenerar.Enabled = false;
+        }
+
+
+
+        private async void button2_Click(object sender, EventArgs e)
+        {
+            //confirmar();
+            confirmarTarjeta();
+            this.Close();
+
+
 
         }
     }
