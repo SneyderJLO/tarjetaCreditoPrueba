@@ -122,13 +122,10 @@ namespace CapaVista
                         // Asigna la lista de tarjetas al DataGridView
                         if (tarjetas.Count > 0)
                         {
-                            var dialogo = new frmClienteTarjeta();
-
-
-                            dialogo.dtgDatosCliente.DataSource = tarjetas;
+                            var dialogo = new frmListadoTransaccion();
+                            dialogo.dtgTransaccion.DataSource = tarjetas;
+                            //webdialogo.dtgDatosCliente.CellContentClick -= dialogo.dtgDatosCliente.CellContentClick;
                             dialogo.ShowDialog();
-
-
                         }
 
 
@@ -235,6 +232,11 @@ namespace CapaVista
         }
 
         private void dgvProductos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void panel3_Paint(object sender, PaintEventArgs e)
         {
 
         }

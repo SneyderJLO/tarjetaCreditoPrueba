@@ -727,23 +727,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\kikin\\.nuget\\packages\\": {},
+    "C:\\Users\\usrTechsoft\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\kikin\\Source\\Repos\\tarjetaCreditoPrueba\\TarjetaCreditoApi\\TarjetaCreditoApi.csproj",
+      "projectUniqueName": "C:\\Users\\usrTechsoft\\source\\repos\\TarjetaCreditoBecarios\\TarjetaCreditoApi\\TarjetaCreditoApi.csproj",
       "projectName": "TarjetaCreditoApi",
-      "projectPath": "C:\\Users\\kikin\\Source\\Repos\\tarjetaCreditoPrueba\\TarjetaCreditoApi\\TarjetaCreditoApi.csproj",
-      "packagesPath": "C:\\Users\\kikin\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\kikin\\Source\\Repos\\tarjetaCreditoPrueba\\TarjetaCreditoApi\\obj\\",
+      "projectPath": "C:\\Users\\usrTechsoft\\source\\repos\\TarjetaCreditoBecarios\\TarjetaCreditoApi\\TarjetaCreditoApi.csproj",
+      "packagesPath": "C:\\Users\\usrTechsoft\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\usrTechsoft\\source\\repos\\TarjetaCreditoBecarios\\TarjetaCreditoApi\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\kikin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\usrTechsoft\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],

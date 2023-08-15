@@ -1,23 +1,5 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Data.SqlClient;
-using System.Drawing;
-using System.Drawing.Drawing2D;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using TarjetaCreditoApi.Conexion;
-using System.Data.SqlClient;
-using Microsoft.AspNetCore.Http.Extensions;
-using Microsoft.Extensions.Hosting;
 using TarjetaCreditoApi.ApiHelper;
 using TarjetaCreditoApi.Model;
-using TarjetaCreditoApi.Controllers;
-using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
 namespace CapaVista
@@ -72,7 +54,14 @@ namespace CapaVista
         {
             if (e.KeyChar == (char)13)
             {
-                cargarDatosCliente();
+                if (txtCedula.Text == txtCedula.Text.TrimStart('0'))
+                {
+                    cargarDatosCliente();
+                }
+                else
+                {
+                    MessageBox.Show("no puede ingresar ceros a la izquierda");
+                }
             }
         }
 
@@ -88,7 +77,12 @@ namespace CapaVista
             {
                 if (txtCedula.Text != "")
                 {
-                    int idCliente = Convert.ToInt32(txtCedula.Text);
+                    string idCliente = (txtCedula.Text).Trim();
+                    //string strInput = idCliente.TrimStart('0');
+                    string strInput = "0001234";
+                    strInput = strInput.TrimStart('0');
+                    //string variable = txtCedula.Text.Substring(idCliente.IndexOf('0') + 1, txtCedula.TextLength);
+                    MessageBox.Show(strInput);
                     string getRutaCliente = "https://localhost:7273/api/tarjetas?id=" + idCliente;
                     //Creamos el listado de Posts a llenar
                     List<MTarjeta> listado = new List<MTarjeta>();
@@ -145,6 +139,9 @@ namespace CapaVista
                 client.BaseAddress = new Uri("https://localhost:7273/");
                 try
                 {
+                    // string strInput = "0001234";
+                    //strInput = strInput.TrimStart('0');
+                    //MessageBox.Show(strInput);
                     // Realiza la llamada GET a la API y espera la respuesta
                     HttpResponseMessage response = await client.GetAsync("api/tarjetas/tarjetas?id=" + txtCedula.Text);
                     // Verifica si la respuesta es exitosa

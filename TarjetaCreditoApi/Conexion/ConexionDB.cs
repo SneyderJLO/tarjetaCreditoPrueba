@@ -6,10 +6,18 @@
 
         public ConexionDB()
         {
-            //para acceder al archivo de configuración appsettinsJSON
-            var builderConexion = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("appsettings.json").Build();
+            try
+            {
+                //para acceder al archivo de configuración appsettinsJSON
+                var builderConexion = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("appsettings.json").Build();
 
-            rutaConexion = builderConexion.GetSection("ConnectionStrings:conexionDB").Value;
+                rutaConexion = builderConexion.GetSection("ConnectionStrings:conexionDB").Value;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+
 
         }
 

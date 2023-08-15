@@ -4,6 +4,9 @@
     <Compile Update="frmClienteTarjeta.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="frmListadoTransaccion.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="frmTarjeta.cs">
       <SubType>Form</SubType>
     </Compile>
