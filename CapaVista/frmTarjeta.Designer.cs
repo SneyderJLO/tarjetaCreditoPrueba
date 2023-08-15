@@ -112,7 +112,6 @@
             panelContainer.Name = "panelContainer";
             panelContainer.Size = new Size(988, 85);
             panelContainer.TabIndex = 3;
-            panelContainer.Paint += panelContainer_Paint;
             // 
             // cedula3
             // 
@@ -159,7 +158,6 @@
             panel4.Name = "panel4";
             panel4.Size = new Size(988, 430);
             panel4.TabIndex = 5;
-            panel4.Paint += panel4_Paint;
             // 
             // panel1
             // 
@@ -316,7 +314,6 @@
             lblCVC.Size = new Size(56, 28);
             lblCVC.TabIndex = 41;
             lblCVC.TextAlign = ContentAlignment.MiddleRight;
-            lblCVC.Click += lblCVC_Click;
             // 
             // lblNombreBanco
             // 

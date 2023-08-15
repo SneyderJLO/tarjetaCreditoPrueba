@@ -47,13 +47,17 @@ namespace CapaVista
                         TNumeroTarjeta.Text = dialogo.lblNumeroTarjeta.Text;
                         TCvc.Text = dialogo.lblCVV.Text;
                         TFecha.Text = dialogo.lblFecha.Text;
-                        // Haz lo que necesites con el texto obtenido
+
                     }
                 }
             }
-            else
+            else if (txtTotal.Text != "")
             {
                 confirmarTransaccion();
+            }
+            else
+            {
+                MessageBox.Show("No se han seleccionado productos");
             }
         }
         private async void confirmarTransaccion()
@@ -63,9 +67,6 @@ namespace CapaVista
                 string rutaApi = "https://localhost:7273/api/tarjetas/transaccion";
                 try
                 {
-
-
-                    // Crear un objeto para enviar en el cuerpo de la solicitud POST
                     MTransaccion postData = new MTransaccion()
                     {
                         idProducto = cmbProducto.SelectedIndex + 1,
@@ -79,7 +80,7 @@ namespace CapaVista
 
                     if (response.IsSuccessStatusCode)
                     {
-                        MessageBox.Show("Transaccion insertada correctamente.");
+                        MessageBox.Show("Transaccion insertada correctamente.", "Aviso    ");
 
                     }
                     else
@@ -106,86 +107,63 @@ namespace CapaVista
         {
             using (HttpClient client = new HttpClient())
             {
-                // Configura la base URL de tu API
                 client.BaseAddress = new Uri("https://localhost:7273/");
                 try
                 {
-                    // Realiza la llamada GET a la API y espera la respuesta
                     HttpResponseMessage response = await client.GetAsync("api/tarjetas/transacciones?id=" + TCliente.Text);
-                    // Verifica si la respuesta es exitosa
+
                     if (response.IsSuccessStatusCode)
                     {
-                        // Lee el contenido de la respuesta como una cadena JSON
+
                         string responseBody = await response.Content.ReadAsStringAsync();
-                        // Aquí puedes procesar o mostrar el responseBody como necesites
                         List<MTransaccion> tarjetas = JsonConvert.DeserializeObject<List<MTransaccion>>(responseBody);
-                        // Asigna la lista de tarjetas al DataGridView
+
                         if (tarjetas.Count > 0)
                         {
                             var dialogo = new frmListadoTransaccion();
                             dialogo.dtgTransaccion.DataSource = tarjetas;
-                            //webdialogo.dtgDatosCliente.CellContentClick -= dialogo.dtgDatosCliente.CellContentClick;
+
                             dialogo.ShowDialog();
                         }
-
-
                     }
 
                 }
                 catch (Exception ex)
                 {
-                    // Manejo de excepciones en caso de problemas de conexión u otros errores
+
                     MessageBox.Show("Error: " + ex.Message);
                 }
             }
         }
-        private void panel4_Paint(object sender, PaintEventArgs e)
-        {
 
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
 
         private async void frmTransaccion_Load(object sender, EventArgs e)
         {
             using (HttpClient client = new HttpClient())
             {
-                // Configura la base URL de tu API
                 client.BaseAddress = new Uri("https://fakestoreapi.com/products");
                 // client.BaseAddress = new Uri("https://api.storerestapi.com/products");
                 try
                 {
-                    // Realiza la llamada GET a la API y espera la respuesta
                     HttpResponseMessage response = await client.GetAsync("products");
-                    // Verifica si la respuesta es exitosa
                     if (response.IsSuccessStatusCode)
                     {
-                        // Lee el contenido de la respuesta como una cadena JSON
                         string responseBody = await response.Content.ReadAsStringAsync();
-                        // Aquí puedes procesar o mostrar el responseBody como necesites
                         tarjetas = JsonConvert.DeserializeObject<List<MProducto>>(responseBody);
-                        // Asigna la lista de tarjetas al DataGridView
-
                         List<string> products = new List<string>();
                         foreach (var item in tarjetas)
                         {
                             products.Add(item.id + "");
                         }
                         cmbProducto.DataSource = products;
-                        // MessageBox.Show(tarjetas.Count + "");
                     }
                     else
                     {
-                        // Si la respuesta no es exitosa, muestra un mensaje de error
                         dgvProductos.DataSource = "Error en la solicitud: " + response.ReasonPhrase;
                     }
                 }
                 catch (Exception ex)
                 {
-                    // Manejo de excepciones en caso de problemas de conexión u otros errores
                     MessageBox.Show("Error: " + ex.Message);
                 }
             }
@@ -207,10 +185,6 @@ namespace CapaVista
             this.txtProducto.Text = tituloProducto.ToUpper().ToString();
         }
 
-        private void toolTip1_Popup(object sender, PopupEventArgs e)
-        {
-
-        }
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
@@ -231,14 +205,6 @@ namespace CapaVista
 
         }
 
-        private void dgvProductos_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
 
-        }
-
-        private void panel3_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
     }
 }

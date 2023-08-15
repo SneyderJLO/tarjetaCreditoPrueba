@@ -400,7 +400,6 @@ namespace CapaVista
             label1.TabIndex = 4;
             label1.Text = "Ingrese el número de cédula";
             label1.TextAlign = ContentAlignment.MiddleCenter;
-            label1.Click += label1_Click;
             // 
             // panel5
             // 

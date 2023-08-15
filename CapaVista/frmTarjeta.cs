@@ -25,19 +25,12 @@ namespace CapaVista
         public const string rutaApi = "https://localhost:7273/api/tarjetas/tarjeta"; // Reemplaza con la URL de tu API
         public frmTarjeta()
         {
-            this.SetStyle(ControlStyles.SupportsTransparentBackColor, true);
-            BackColor = Color.Transparent;
             InitializeComponent();
         }
 
-        private void panelContainer_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
 
         private void frmTarjeta_Load(object sender, EventArgs e)
         {
-
             lblNombreBanco.Parent = pctCard;
             lblNombre.Parent = pctCard;
             txtTarjeta.Parent = pctCard;
@@ -46,16 +39,8 @@ namespace CapaVista
             lbl.Parent = pctCard;
             comboBox1.SelectedIndex = 0;
             comboBox2.SelectedIndex = 0;
-            //lblConfirm.Enabled = false;
-            //lblNombreCliente.Text = "Id Cliente:";
         }
 
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-
-
-        }
 
         public static long GenerarNumeroAleatorio()
         {
@@ -73,13 +58,11 @@ namespace CapaVista
             int sumaImpares = 0;
             int tmp = 0;
 
-            // Sumamos los pares
             for (int i = 2; i <= 8; i += 2)
             {
                 sumaPares = sumaPares + int.Parse(numeroTarjeta.Substring(i - 1, 1));
             }
 
-            // Sumamos los impares
             for (int i = 1; i <= 9; i += 2)
             {
                 tmp = int.Parse(numeroTarjeta.Substring(i - 1, 1)) * 2;
@@ -88,15 +71,10 @@ namespace CapaVista
                 sumaImpares = sumaImpares + tmp;
             }
 
-            // Obtenemos el dígito
             int digito = (sumaPares + sumaImpares) % 10;
             return digito;
         }
 
-        private async void lblConfirm_Click(object sender, EventArgs e)
-        {
-
-        }
 
 
         private async void confirmarTarjeta()
@@ -110,14 +88,10 @@ namespace CapaVista
                     decimal saldoUtilizado = saldoTarjeta(saldoAutorizado);
                     decimal saldoDisponible = saldoAutorizado - saldoUtilizado;
                     DateTime fechaExpira = DateTime.Parse(labelfECHA.Text);
-
-                    // Crear un objeto para enviar en el cuerpo de la solicitud POST
                     MTarjeta postData = new MTarjeta()
                     {
                         idCliente = int.Parse(cedula3.Text),
-                        // idTarjeta = 99,
                         numeroTarjeta = txtTarjeta.Text,
-
                         fechaexpira = fechaExpira,
                         cvv = int.Parse(lblCVC.Text),
                         cupoAutorizado = saldoAutorizado,
@@ -129,7 +103,7 @@ namespace CapaVista
 
                     if (response.IsSuccessStatusCode)
                     {
-                        MessageBox.Show("Tarjeta insertada correctamente.");
+                        MessageBox.Show("Tarjeta insertada correctamente.", "Aviso");
 
                     }
                     else
@@ -157,11 +131,8 @@ namespace CapaVista
                 MTarjeta datosTarjeta = new MTarjeta()
                 {
 
-
                     idCliente = int.Parse(cedula3.Text),
-                    // idTarjeta = 99,
                     numeroTarjeta = txtTarjeta.Text,
-
                     fechaexpira = fechaExpira,
                     cvv = int.Parse(lblCVC.Text),
                     cupoAutorizado = saldoAutorizado,
@@ -175,7 +146,7 @@ namespace CapaVista
 
                 if (oReply.StatusCode == "OK")
                 {
-                    MessageBox.Show("Tarjeta insertada correctamente.");
+                    MessageBox.Show("Tarjeta insertada correctamente.", "Aviso");
                 }
                 else
                 {
@@ -212,10 +183,7 @@ namespace CapaVista
 
         }
 
-        private void panel4_Paint(object sender, PaintEventArgs e)
-        {
 
-        }
 
         public DateTime GenerateRandomDate()
         {
@@ -229,24 +197,6 @@ namespace CapaVista
             return randomDate;
         }
 
-        private void panel7_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void lblCVC_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void materialLabel1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void materialSingleLineTextField1_Click(object sender, EventArgs e)
-        {
-        }
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -259,21 +209,15 @@ namespace CapaVista
             btnConfirmar.Enabled = true;
             btnGenerar.Enabled = false;
             lblSaldoAutorizado.Text = saldoTarjeta().ToString();
-
             txtNombre.Text = lblNombre.Text;
             lblTarjeta.Text = txtTarjeta.Text;
             lblCodigoCvv.Text = lblCVC.Text;
-            //  panel2.Enabled = false;
-
-            //lblConfirm.Enabled = true;
-            //lblGenerar.Enabled = false;
         }
 
 
 
         private async void button2_Click(object sender, EventArgs e)
         {
-            //confirmar();
             confirmarTarjeta();
             this.Close();
 

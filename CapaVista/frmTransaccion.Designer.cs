@@ -105,7 +105,6 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(1199, 95);
             panel1.TabIndex = 0;
-            panel1.Paint += panel1_Paint;
             // 
             // pictureBox5
             // 
@@ -182,7 +181,7 @@
             // 
             // panel4
             // 
-            panel4.BorderStyle = BorderStyle.FixedSingle;
+            panel4.BorderStyle = BorderStyle.Fixed3D;
             panel4.Controls.Add(dgvProductos);
             panel4.Controls.Add(txtProducto);
             panel4.Controls.Add(cmbProducto);
@@ -194,7 +193,6 @@
             panel4.Name = "panel4";
             panel4.Size = new Size(683, 357);
             panel4.TabIndex = 5;
-            panel4.Paint += panel4_Paint;
             // 
             // dgvProductos
             // 
@@ -202,6 +200,8 @@
             dgvProductos.AllowUserToDeleteRows = false;
             dgvProductos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dgvProductos.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgvProductos.BackgroundColor = Color.White;
+            dgvProductos.BorderStyle = BorderStyle.Fixed3D;
             dgvProductos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvProductos.Columns.AddRange(new DataGridViewColumn[] { id, Precio, Producto });
             dgvProductos.Location = new Point(37, 206);
@@ -314,7 +314,7 @@
             // panel3
             // 
             panel3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            panel3.BorderStyle = BorderStyle.FixedSingle;
+            panel3.BorderStyle = BorderStyle.Fixed3D;
             panel3.Controls.Add(panel6);
             panel3.Controls.Add(TCvc);
             panel3.Controls.Add(label20);
@@ -339,7 +339,6 @@
             panel3.Name = "panel3";
             panel3.Size = new Size(438, 319);
             panel3.TabIndex = 4;
-            panel3.Paint += panel3_Paint;
             // 
             // panel6
             // 
@@ -354,9 +353,9 @@
             panel6.Controls.Add(label26);
             panel6.Controls.Add(label25);
             panel6.Dock = DockStyle.Right;
-            panel6.Location = new Point(278, 0);
+            panel6.Location = new Point(276, 0);
             panel6.Name = "panel6";
-            panel6.Size = new Size(158, 317);
+            panel6.Size = new Size(158, 315);
             panel6.TabIndex = 25;
             // 
             // label30
@@ -422,12 +421,11 @@
             // 
             // txtTotal
             // 
-            txtTotal.Font = new Font("Segoe UI Emoji", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txtTotal.Font = new Font("Segoe UI Emoji", 12F, FontStyle.Bold, GraphicsUnit.Point);
             txtTotal.Location = new Point(15, 227);
             txtTotal.Name = "txtTotal";
             txtTotal.Size = new Size(116, 20);
             txtTotal.TabIndex = 28;
-            txtTotal.Text = "XXX";
             txtTotal.TextAlign = ContentAlignment.MiddleRight;
             // 
             // label23
