@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmTransaccion));
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             panel1 = new Panel();
             pictureBox5 = new PictureBox();
             label22 = new Label();
@@ -39,8 +42,8 @@
             panel4 = new Panel();
             dgvProductos = new DataGridView();
             id = new DataGridViewTextBoxColumn();
-            Precio = new DataGridViewTextBoxColumn();
             Producto = new DataGridViewTextBoxColumn();
+            Precio = new DataGridViewTextBoxColumn();
             txtProducto = new Label();
             cmbProducto = new ComboBox();
             rtbDescripcionProducto = new RichTextBox();
@@ -173,7 +176,7 @@
             btn_actualizar.ForeColor = Color.FromArgb(224, 225, 221);
             btn_actualizar.Location = new Point(735, 379);
             btn_actualizar.Name = "btn_actualizar";
-            btn_actualizar.Size = new Size(442, 32);
+            btn_actualizar.Size = new Size(436, 32);
             btn_actualizar.TabIndex = 7;
             btn_actualizar.Text = "Procesar compra";
             btn_actualizar.UseVisualStyleBackColor = false;
@@ -198,18 +201,47 @@
             // 
             dgvProductos.AllowUserToAddRows = false;
             dgvProductos.AllowUserToDeleteRows = false;
-            dgvProductos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-            dgvProductos.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgvProductos.AllowUserToResizeColumns = false;
+            dgvProductos.AllowUserToResizeRows = false;
+            dgvProductos.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dgvProductos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvProductos.BackgroundColor = Color.White;
             dgvProductos.BorderStyle = BorderStyle.Fixed3D;
-            dgvProductos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvProductos.Columns.AddRange(new DataGridViewColumn[] { id, Precio, Producto });
+            dgvProductos.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dgvProductos.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = Color.White;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = Color.AliceBlue;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dgvProductos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dgvProductos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dgvProductos.Columns.AddRange(new DataGridViewColumn[] { id, Producto, Precio });
+            dgvProductos.GridColor = Color.Gainsboro;
             dgvProductos.Location = new Point(37, 206);
             dgvProductos.Margin = new Padding(3, 2, 3, 2);
             dgvProductos.Name = "dgvProductos";
             dgvProductos.ReadOnly = true;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.White;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = Color.AliceBlue;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dgvProductos.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dgvProductos.RowHeadersVisible = false;
             dgvProductos.RowHeadersWidth = 51;
+            dgvProductos.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            dataGridViewCellStyle3.BackColor = Color.White;
+            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = Color.AliceBlue;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.WindowText;
+            dgvProductos.RowsDefaultCellStyle = dataGridViewCellStyle3;
             dgvProductos.RowTemplate.Height = 29;
+            dgvProductos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvProductos.Size = new Size(613, 130);
             dgvProductos.TabIndex = 29;
             // 
@@ -219,15 +251,6 @@
             id.MinimumWidth = 6;
             id.Name = "id";
             id.ReadOnly = true;
-            id.Width = 42;
-            // 
-            // Precio
-            // 
-            Precio.HeaderText = "Precio";
-            Precio.MinimumWidth = 6;
-            Precio.Name = "Precio";
-            Precio.ReadOnly = true;
-            Precio.Width = 65;
             // 
             // Producto
             // 
@@ -235,7 +258,13 @@
             Producto.MinimumWidth = 6;
             Producto.Name = "Producto";
             Producto.ReadOnly = true;
-            Producto.Width = 81;
+            // 
+            // Precio
+            // 
+            Precio.HeaderText = "Precio";
+            Precio.MinimumWidth = 6;
+            Precio.Name = "Precio";
+            Precio.ReadOnly = true;
             // 
             // txtProducto
             // 
@@ -339,6 +368,7 @@
             panel3.Name = "panel3";
             panel3.Size = new Size(438, 319);
             panel3.TabIndex = 4;
+            panel3.Paint += panel3_Paint;
             // 
             // panel6
             // 
@@ -520,12 +550,12 @@
             // 
             // TCliente
             // 
-            TCliente.AutoSize = true;
             TCliente.Font = new Font("Segoe UI Emoji", 12F, FontStyle.Regular, GraphicsUnit.Point);
             TCliente.Location = new Point(216, 68);
             TCliente.Name = "TCliente";
-            TCliente.Size = new Size(0, 21);
+            TCliente.Size = new Size(52, 21);
             TCliente.TabIndex = 18;
+            TCliente.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // TNombre
             // 
@@ -740,7 +770,7 @@
         public Label TNumeroTarjeta;
         public Label TCvc;
         private DataGridViewTextBoxColumn id;
-        private DataGridViewTextBoxColumn Precio;
         private DataGridViewTextBoxColumn Producto;
+        private DataGridViewTextBoxColumn Precio;
     }
 }

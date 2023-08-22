@@ -17,10 +17,6 @@ namespace CapaVista
             InitializeComponent();
         }
 
-        private void frmListadoTransaccion_Load(object sender, EventArgs e)
-        {
-            dtgTransaccion.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.ColumnHeader);
 
-        }
     }
 }

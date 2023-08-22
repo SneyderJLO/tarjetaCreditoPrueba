@@ -29,6 +29,10 @@ namespace CapaVista
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmClienteTarjeta));
             panelContainer = new Panel();
             panel9 = new Panel();
@@ -65,6 +69,9 @@ namespace CapaVista
             pictureBox2 = new PictureBox();
             panel4 = new Panel();
             panel1 = new Panel();
+            txtValorTotal = new Label();
+            label6 = new Label();
+            label7 = new Label();
             panelContainer.SuspendLayout();
             panel9.SuspendLayout();
             panel11.SuspendLayout();
@@ -119,21 +126,62 @@ namespace CapaVista
             // 
             // dtgDatosCliente
             // 
+            dtgDatosCliente.AllowUserToAddRows = false;
+            dtgDatosCliente.AllowUserToDeleteRows = false;
+            dtgDatosCliente.AllowUserToResizeColumns = false;
+            dtgDatosCliente.AllowUserToResizeRows = false;
             dtgDatosCliente.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            dtgDatosCliente.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.ColumnHeader;
-            dtgDatosCliente.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-            dtgDatosCliente.BackgroundColor = Color.White;
-            dtgDatosCliente.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dtgDatosCliente.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dtgDatosCliente.BackgroundColor = Color.WhiteSmoke;
+            dtgDatosCliente.BorderStyle = BorderStyle.None;
+            dtgDatosCliente.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dtgDatosCliente.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = Color.Red;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = Color.Red;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dtgDatosCliente.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dtgDatosCliente.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.Red;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = Color.AliceBlue;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dtgDatosCliente.DefaultCellStyle = dataGridViewCellStyle2;
             dtgDatosCliente.GridColor = Color.FromArgb(224, 225, 221);
             dtgDatosCliente.Location = new Point(0, 0);
             dtgDatosCliente.MultiSelect = false;
             dtgDatosCliente.Name = "dtgDatosCliente";
             dtgDatosCliente.ReadOnly = true;
+            dtgDatosCliente.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = Color.White;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = Color.AliceBlue;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            dtgDatosCliente.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dtgDatosCliente.RowHeadersVisible = false;
             dtgDatosCliente.RowHeadersWidth = 51;
+            dtgDatosCliente.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            dataGridViewCellStyle4.BackColor = Color.White;
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = Color.AliceBlue;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.WindowText;
+            dtgDatosCliente.RowsDefaultCellStyle = dataGridViewCellStyle4;
             dtgDatosCliente.RowTemplate.Height = 25;
+            dtgDatosCliente.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dtgDatosCliente.Size = new Size(849, 276);
             dtgDatosCliente.TabIndex = 1;
             dtgDatosCliente.CellClick += dtgDatosCliente_CellClick;
+            dtgDatosCliente.CellContentClick += dtgDatosCliente_CellContentClick;
             // 
             // panel10
             // 
@@ -164,6 +212,9 @@ namespace CapaVista
             // panel3
             // 
             panel3.BackColor = Color.FromArgb(65, 90, 119);
+            panel3.Controls.Add(txtValorTotal);
+            panel3.Controls.Add(label6);
+            panel3.Controls.Add(label7);
             panel3.Controls.Add(btn_actualizar);
             panel3.Controls.Add(lblSaldoDisponible);
             panel3.Controls.Add(label9);
@@ -203,20 +254,18 @@ namespace CapaVista
             // 
             // lblSaldoDisponible
             // 
-            lblSaldoDisponible.AutoSize = true;
             lblSaldoDisponible.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
             lblSaldoDisponible.ForeColor = Color.FromArgb(224, 225, 221);
-            lblSaldoDisponible.Location = new Point(607, 74);
+            lblSaldoDisponible.Location = new Point(577, 74);
             lblSaldoDisponible.Name = "lblSaldoDisponible";
-            lblSaldoDisponible.Size = new Size(40, 21);
+            lblSaldoDisponible.Size = new Size(73, 21);
             lblSaldoDisponible.TabIndex = 46;
-            lblSaldoDisponible.Text = "XXX";
             lblSaldoDisponible.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // label9
             // 
             label9.ForeColor = Color.FromArgb(224, 225, 221);
-            label9.Location = new Point(601, 89);
+            label9.Location = new Point(571, 89);
             label9.Name = "label9";
             label9.Size = new Size(92, 20);
             label9.TabIndex = 45;
@@ -228,7 +277,7 @@ namespace CapaVista
             label10.AutoSize = true;
             label10.Font = new Font("Segoe UI", 9F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
             label10.ForeColor = Color.White;
-            label10.Location = new Point(607, 50);
+            label10.Location = new Point(577, 50);
             label10.Name = "label10";
             label10.Size = new Size(99, 15);
             label10.TabIndex = 44;
@@ -237,7 +286,7 @@ namespace CapaVista
             // pictureBox3
             // 
             pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
-            pictureBox3.Location = new Point(80, 74);
+            pictureBox3.Location = new Point(50, 74);
             pictureBox3.Name = "pictureBox3";
             pictureBox3.Size = new Size(34, 26);
             pictureBox3.SizeMode = PictureBoxSizeMode.Zoom;
@@ -246,20 +295,18 @@ namespace CapaVista
             // 
             // lblCVV
             // 
-            lblCVV.AutoSize = true;
             lblCVV.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
             lblCVV.ForeColor = Color.FromArgb(224, 225, 221);
-            lblCVV.Location = new Point(492, 74);
+            lblCVV.Location = new Point(462, 74);
             lblCVV.Name = "lblCVV";
-            lblCVV.Size = new Size(40, 21);
+            lblCVV.Size = new Size(70, 21);
             lblCVV.TabIndex = 34;
-            lblCVV.Text = "XXX";
             lblCVV.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // label20
             // 
             label20.ForeColor = Color.FromArgb(224, 225, 221);
-            label20.Location = new Point(486, 89);
+            label20.Location = new Point(456, 89);
             label20.Name = "label20";
             label20.Size = new Size(92, 20);
             label20.TabIndex = 33;
@@ -271,7 +318,7 @@ namespace CapaVista
             label21.AutoSize = true;
             label21.Font = new Font("Segoe UI", 9F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
             label21.ForeColor = Color.White;
-            label21.Location = new Point(492, 50);
+            label21.Location = new Point(462, 50);
             label21.Name = "label21";
             label21.Size = new Size(31, 15);
             label21.TabIndex = 32;
@@ -279,19 +326,17 @@ namespace CapaVista
             // 
             // lblFecha
             // 
-            lblFecha.AutoSize = true;
             lblFecha.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
             lblFecha.ForeColor = Color.FromArgb(224, 225, 221);
-            lblFecha.Location = new Point(355, 74);
+            lblFecha.Location = new Point(325, 74);
             lblFecha.Name = "lblFecha";
-            lblFecha.Size = new Size(75, 21);
+            lblFecha.Size = new Size(89, 21);
             lblFecha.TabIndex = 31;
-            lblFecha.Text = "MM / AA";
             // 
             // label18
             // 
             label18.ForeColor = Color.FromArgb(224, 225, 221);
-            label18.Location = new Point(355, 89);
+            label18.Location = new Point(325, 89);
             label18.Name = "label18";
             label18.Size = new Size(89, 20);
             label18.TabIndex = 30;
@@ -303,7 +348,7 @@ namespace CapaVista
             label16.AutoSize = true;
             label16.Font = new Font("Segoe UI", 9F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
             label16.ForeColor = Color.White;
-            label16.Location = new Point(355, 50);
+            label16.Location = new Point(325, 50);
             label16.Name = "label16";
             label16.Size = new Size(79, 15);
             label16.TabIndex = 29;
@@ -311,19 +356,17 @@ namespace CapaVista
             // 
             // lblNumeroTarjeta
             // 
-            lblNumeroTarjeta.AutoSize = true;
             lblNumeroTarjeta.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
             lblNumeroTarjeta.ForeColor = Color.FromArgb(224, 225, 221);
-            lblNumeroTarjeta.Location = new Point(119, 74);
+            lblNumeroTarjeta.Location = new Point(89, 74);
             lblNumeroTarjeta.Name = "lblNumeroTarjeta";
-            lblNumeroTarjeta.Size = new Size(126, 21);
+            lblNumeroTarjeta.Size = new Size(198, 21);
             lblNumeroTarjeta.TabIndex = 28;
-            lblNumeroTarjeta.Text = "0000 0000 0000";
             // 
             // label11
             // 
             label11.ForeColor = Color.FromArgb(224, 225, 221);
-            label11.Location = new Point(79, 90);
+            label11.Location = new Point(49, 90);
             label11.Name = "label11";
             label11.Size = new Size(254, 20);
             label11.TabIndex = 26;
@@ -335,7 +378,7 @@ namespace CapaVista
             label12.AutoSize = true;
             label12.Font = new Font("Segoe UI", 9F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
             label12.ForeColor = Color.White;
-            label12.Location = new Point(69, 50);
+            label12.Location = new Point(39, 50);
             label12.Name = "label12";
             label12.Size = new Size(218, 15);
             label12.TabIndex = 25;
@@ -345,7 +388,7 @@ namespace CapaVista
             // 
             label4.Font = new Font("Segoe UI Black", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
             label4.ForeColor = Color.FromArgb(224, 225, 221);
-            label4.Location = new Point(56, 20);
+            label4.Location = new Point(26, 20);
             label4.Name = "label4";
             label4.Size = new Size(158, 19);
             label4.TabIndex = 0;
@@ -498,11 +541,42 @@ namespace CapaVista
             panel1.Size = new Size(1032, 562);
             panel1.TabIndex = 2;
             // 
+            // txtValorTotal
+            // 
+            txtValorTotal.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
+            txtValorTotal.ForeColor = Color.FromArgb(224, 225, 221);
+            txtValorTotal.Location = new Point(699, 74);
+            txtValorTotal.Name = "txtValorTotal";
+            txtValorTotal.Size = new Size(73, 21);
+            txtValorTotal.TabIndex = 49;
+            txtValorTotal.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // label6
+            // 
+            label6.ForeColor = Color.FromArgb(224, 225, 221);
+            label6.Location = new Point(693, 89);
+            label6.Name = "label6";
+            label6.Size = new Size(92, 20);
+            label6.TabIndex = 48;
+            label6.Text = "_______________";
+            label6.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("Segoe UI", 9F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
+            label7.ForeColor = Color.White;
+            label7.Location = new Point(699, 50);
+            label7.Name = "label7";
+            label7.Size = new Size(99, 15);
+            label7.TabIndex = 47;
+            label7.Text = "Valor a cancelar";
+            // 
             // frmClienteTarjeta
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.FromArgb(224, 225, 221);
+            BackColor = Color.Red;
             ClientSize = new Size(1032, 562);
             Controls.Add(panel1);
             MaximizeBox = false;
@@ -566,5 +640,8 @@ namespace CapaVista
         public Label lblFecha;
         public Label lblNumeroTarjeta;
         public DataGridView dtgDatosCliente;
+        private Label label6;
+        private Label label7;
+        public Label txtValorTotal;
     }
 }

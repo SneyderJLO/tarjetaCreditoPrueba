@@ -12,7 +12,6 @@ using System.Net.Http.Json;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using TarjetaCreditoApi.ApiHelper;
 using TarjetaCreditoApi.Model;
 using System.Data.SqlTypes;
 using Newtonsoft.Json.Linq;
@@ -22,7 +21,7 @@ namespace CapaVista
 
     public partial class frmTarjeta : Form
     {
-        public const string rutaApi = "https://localhost:7273/api/tarjetas/tarjeta"; // Reemplaza con la URL de tu API
+        public const string rutaApi = "http://192.168.1.124:88/api/tarjetas/tarjeta"; // Reemplaza con la URL de tu API
         public frmTarjeta()
         {
             InitializeComponent();
@@ -119,46 +118,7 @@ namespace CapaVista
         }
 
 
-        public async void confirmar()
-        {
 
-            decimal saldoAutorizado = decimal.Parse(lblSaldoAutorizado.Text);
-            decimal saldoUtilizado = saldoTarjeta(saldoAutorizado);
-            decimal saldoDisponible = saldoAutorizado - saldoUtilizado;
-            try
-            {
-                DateTime fechaExpira = DateTime.Parse(labelfECHA.Text);
-                MTarjeta datosTarjeta = new MTarjeta()
-                {
-
-                    idCliente = int.Parse(cedula3.Text),
-                    numeroTarjeta = txtTarjeta.Text,
-                    fechaexpira = fechaExpira,
-                    cvv = int.Parse(lblCVC.Text),
-                    cupoAutorizado = saldoAutorizado,
-                    cupoUtilizado = saldoUtilizado,
-                    cupoDisponible = saldoDisponible
-                };
-                Reply oReply = new Reply();
-
-                oReply = await Consumer.Execute<MTarjeta>(rutaApi, methodHttp.POST, datosTarjeta);
-
-
-                if (oReply.StatusCode == "OK")
-                {
-                    MessageBox.Show("Tarjeta insertada correctamente.", "Aviso");
-                }
-                else
-                {
-                    MessageBox.Show("Error al insertar la tarjeta. Código de estado: " + oReply.StatusCode);
-                }
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex + "");
-            }
-        }
 
         public int generarCVC()
         {

@@ -29,12 +29,15 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmListadoTransaccion));
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             panel1 = new Panel();
             label2 = new Label();
             panel3 = new Panel();
             pictureBox2 = new PictureBox();
             panel4 = new Panel();
-            dtgTransaccion = new DataGridView();
             panel2 = new Panel();
             btn_actualizar = new Button();
             lblCVV = new Label();
@@ -48,13 +51,14 @@
             label12 = new Label();
             label4 = new Label();
             dtgDatosTransaccion = new DataGridView();
+            dtgTransaccion = new DataGridView();
             panel1.SuspendLayout();
             panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dtgTransaccion).BeginInit();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dtgDatosTransaccion).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dtgTransaccion).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -113,25 +117,6 @@
             panel4.Name = "panel4";
             panel4.Size = new Size(780, 394);
             panel4.TabIndex = 2;
-            // 
-            // dtgTransaccion
-            // 
-            dtgTransaccion.AllowUserToAddRows = false;
-            dtgTransaccion.AllowUserToDeleteRows = false;
-            dtgTransaccion.AllowUserToOrderColumns = true;
-            dtgTransaccion.BackgroundColor = Color.White;
-            dtgTransaccion.BorderStyle = BorderStyle.None;
-            dtgTransaccion.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dtgTransaccion.Dock = DockStyle.Fill;
-            dtgTransaccion.GridColor = Color.FromArgb(224, 225, 221);
-            dtgTransaccion.Location = new Point(0, 125);
-            dtgTransaccion.MultiSelect = false;
-            dtgTransaccion.Name = "dtgTransaccion";
-            dtgTransaccion.ReadOnly = true;
-            dtgTransaccion.RowHeadersWidth = 51;
-            dtgTransaccion.RowTemplate.Height = 25;
-            dtgTransaccion.Size = new Size(778, 267);
-            dtgTransaccion.TabIndex = 36;
             // 
             // panel2
             // 
@@ -303,6 +288,63 @@
             dtgDatosTransaccion.Size = new Size(778, 392);
             dtgDatosTransaccion.TabIndex = 2;
             // 
+            // dtgTransaccion
+            // 
+            dtgTransaccion.AllowUserToAddRows = false;
+            dtgTransaccion.AllowUserToDeleteRows = false;
+            dtgTransaccion.AllowUserToResizeColumns = false;
+            dtgTransaccion.AllowUserToResizeRows = false;
+            dtgTransaccion.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dtgTransaccion.BackgroundColor = Color.WhiteSmoke;
+            dtgTransaccion.BorderStyle = BorderStyle.None;
+            dtgTransaccion.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dtgTransaccion.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = Color.Red;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = Color.Red;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dtgTransaccion.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dtgTransaccion.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.Red;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = Color.AliceBlue;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dtgTransaccion.DefaultCellStyle = dataGridViewCellStyle2;
+            dtgTransaccion.Dock = DockStyle.Fill;
+            dtgTransaccion.GridColor = Color.FromArgb(224, 225, 221);
+            dtgTransaccion.Location = new Point(0, 125);
+            dtgTransaccion.MultiSelect = false;
+            dtgTransaccion.Name = "dtgTransaccion";
+            dtgTransaccion.ReadOnly = true;
+            dtgTransaccion.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = Color.White;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = Color.AliceBlue;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            dtgTransaccion.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dtgTransaccion.RowHeadersVisible = false;
+            dtgTransaccion.RowHeadersWidth = 51;
+            dtgTransaccion.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            dataGridViewCellStyle4.BackColor = Color.White;
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = Color.AliceBlue;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.WindowText;
+            dtgTransaccion.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dtgTransaccion.RowTemplate.Height = 25;
+            dtgTransaccion.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dtgTransaccion.Size = new Size(778, 267);
+            dtgTransaccion.TabIndex = 5;
+            // 
             // frmListadoTransaccion
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -313,15 +355,14 @@
             Name = "frmListadoTransaccion";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Lista de transacciones por cliente";
-            Load += frmListadoTransaccion_Load;
             panel1.ResumeLayout(false);
             panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             panel4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dtgTransaccion).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dtgDatosTransaccion).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dtgTransaccion).EndInit();
             ResumeLayout(false);
         }
 

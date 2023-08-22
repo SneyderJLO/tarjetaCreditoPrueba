@@ -1,4 +1,4 @@
-using TarjetaCreditoApi.ApiHelper;
+
 using TarjetaCreditoApi.Model;
 using Newtonsoft.Json;
 
@@ -6,7 +6,7 @@ namespace CapaVista
 {
     public partial class frmClienteTarjeta : Form
     {
-
+        List<MTarjeta> tarjetas = new List<MTarjeta>();
         public int idTarjeta { get; set; }
         public string id { get; set; }
 
@@ -29,59 +29,40 @@ namespace CapaVista
 
         private void txtCedula_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == (char)13)
+            if ((e.KeyChar == (char)13))
             {
+
                 if (txtCedula.Text == txtCedula.Text.TrimStart('0'))
                 {
                     cargarDatosCliente();
                 }
                 else
                 {
-                    MessageBox.Show("no puede ingresar ceros a la izquierda");
+                    limpiarPantalla();
+                    MessageBox.Show("No puede ingresar ceros a la izquierda", "Error");
+
                 }
+
+
             }
+
         }
 
+        public void limpiarPantalla()
+        {
+            this.dtgDatosCliente.DataSource = null;
+            this.dtgDatosCliente.Rows.Clear();
+            lblNumeroTarjeta.Text = "";
+            lblCVV.Text = "";
+            lblFecha.Text = "";
+            lblSaldoDisponible.Text = "";
+
+        }
 
         private void btn_actualizar_Click(object sender, EventArgs e)
         {
             cargarDatosCliente();
         }
-        public async void mostrar()
-        {
-
-            try
-            {
-                if (txtCedula.Text != "")
-                {
-                    string idCliente = (txtCedula.Text).Trim();
-                    string strInput = "0001234";
-                    strInput = strInput.TrimStart('0');
-
-                    MessageBox.Show(strInput);
-                    string getRutaCliente = "https://localhost:7273/api/tarjetas?id=" + idCliente;
-                    //Creamos el listado de Posts a llenar
-                    List<MTarjeta> listado = new List<MTarjeta>();
-                    Reply oReply = new Reply();
-                    oReply = await Consumer.Execute<List<MTarjeta>>(getRutaCliente, methodHttp.GET, listado);
-
-                    this.dtgDatosCliente.DataSource = oReply.Data;
-
-                }
-                else
-                {
-                    MessageBox.Show("Debes ingresar un valor", "Error");
-                }
-
-            }
-            catch (Exception ex)
-            {
-                this.dtgDatosCliente.DataSource = null;
-                this.dtgDatosCliente.Rows.Clear();
-                MessageBox.Show(ex.Message);
-            }
-        }
-
 
 
         private void dtgDatosCliente_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -89,7 +70,7 @@ namespace CapaVista
             if (e.RowIndex >= 0)
             {
                 DataGridViewRow selectedRow = dtgDatosCliente.Rows[e.RowIndex];
-                dtgDatosCliente.Rows[e.RowIndex].Selected = true;
+                //  dtgDatosCliente.Rows[e.RowIndex].Selected = true;
                 id = selectedRow.Cells["idCliente"].Value.ToString();
                 idTarjeta = int.Parse(selectedRow.Cells["idTarjeta"].Value.ToString());
                 string? numeroTarjeta = selectedRow.Cells["numeroTarjeta"].Value.ToString();
@@ -109,7 +90,7 @@ namespace CapaVista
         {
             using (HttpClient client = new HttpClient())
             {
-                client.BaseAddress = new Uri("https://localhost:7273/");
+                client.BaseAddress = new Uri("http://192.168.1.124:88/");
                 try
                 {
                     HttpResponseMessage response = await client.GetAsync("api/tarjetas/tarjetas?id=" + txtCedula.Text);
@@ -118,7 +99,7 @@ namespace CapaVista
                     {
                         string responseBody = await response.Content.ReadAsStringAsync();
 
-                        List<MTarjeta> tarjetas = JsonConvert.DeserializeObject<List<MTarjeta>>(responseBody);
+                        tarjetas = JsonConvert.DeserializeObject<List<MTarjeta>>(responseBody);
 
                         if (tarjetas.Count > 0)
                         {
@@ -126,9 +107,9 @@ namespace CapaVista
                         }
                         else
                         {
-                            this.dtgDatosCliente.DataSource = null;
-                            this.dtgDatosCliente.Rows.Clear();
+                            limpiarPantalla();
                         }
+
 
                     }
                     else
@@ -147,8 +128,20 @@ namespace CapaVista
 
         private void button1_Click(object sender, EventArgs e)
         {
-            DialogResult = DialogResult.OK;
-            Close();
+            if (lblNumeroTarjeta.Text != "")
+            {
+                DialogResult = DialogResult.OK;
+                Close();
+            }
+            else
+            {
+                MessageBox.Show("Debes seleccionar una tarjeta.", "Error de entrada.");
+            }
+        }
+
+        private void dtgDatosCliente_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

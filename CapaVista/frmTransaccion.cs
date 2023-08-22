@@ -10,7 +10,6 @@ using System.Net.Http.Json;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using TarjetaCreditoApi.ApiHelper;
 using TarjetaCreditoApi.Model;
 using TarjetaCreditoApi.Model.Producto;
 using TarjetaCreditoApi.Model.Transaccion;
@@ -51,9 +50,11 @@ namespace CapaVista
                     }
                 }
             }
-            else if (txtTotal.Text != "")
+            else if (total <= 0)
             {
+
                 confirmarTransaccion();
+
             }
             else
             {
@@ -64,7 +65,7 @@ namespace CapaVista
         {
             using (HttpClient client = new HttpClient())
             {
-                string rutaApi = "https://localhost:7273/api/tarjetas/transaccion";
+                string rutaApi = "http://192.168.1.124:88/api/tarjetas/transaccion";
                 try
                 {
                     MTransaccion postData = new MTransaccion()
@@ -80,7 +81,7 @@ namespace CapaVista
 
                     if (response.IsSuccessStatusCode)
                     {
-                        MessageBox.Show("Transaccion insertada correctamente.", "Aviso    ");
+                        MessageBox.Show("Transaccion insertada correctamente.", "Aviso");
 
                     }
                     else
@@ -107,7 +108,7 @@ namespace CapaVista
         {
             using (HttpClient client = new HttpClient())
             {
-                client.BaseAddress = new Uri("https://localhost:7273/");
+                client.BaseAddress = new Uri("http://192.168.1.124:88/");
                 try
                 {
                     HttpResponseMessage response = await client.GetAsync("api/tarjetas/transacciones?id=" + TCliente.Text);
@@ -196,7 +197,7 @@ namespace CapaVista
             string tituloProducto = txtProducto.Text;
             string precioProducto = precio.ToString();
             DataGridViewRow row = new DataGridViewRow();
-            row.CreateCells(dgvProductos, idProducto, precioProducto, tituloProducto);
+            row.CreateCells(dgvProductos, idProducto, tituloProducto, precioProducto);
 
             // Agregar la fila a la DataGridView
             dgvProductos.Rows.Add(row);
@@ -205,6 +206,9 @@ namespace CapaVista
 
         }
 
+        private void panel3_Paint(object sender, PaintEventArgs e)
+        {
 
+        }
     }
 }
