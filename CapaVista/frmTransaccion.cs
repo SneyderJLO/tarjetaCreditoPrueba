@@ -13,6 +13,7 @@ using System.Windows.Forms;
 using TarjetaCreditoApi.Model;
 using TarjetaCreditoApi.Model.Producto;
 using TarjetaCreditoApi.Model.Transaccion;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 
 namespace CapaVista
 {
@@ -34,33 +35,71 @@ namespace CapaVista
         private void btn_actualizar_Click(object sender, EventArgs e)
         {
 
-            if (TCliente.Text == "")
+            if (total > 0)
             {
-                using (var dialogo = new frmClienteTarjeta())
+
+                if (TCliente.Text != "" && TNumeroTarjeta.Text != "")
                 {
-                    if (dialogo.ShowDialog() == DialogResult.OK)
+                    DialogResult result = MessageBox.Show("¿Estás seguro de continuar?", "Confirmación",
+                                                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                    if (result == DialogResult.Yes)
                     {
-                        TCliente.Text = dialogo.id;
-                        idTarjeta = dialogo.idTarjeta;
-                        TNombre.Text = "cliente-cliente";
-                        TNumeroTarjeta.Text = dialogo.lblNumeroTarjeta.Text;
-                        TCvc.Text = dialogo.lblCVV.Text;
-                        TFecha.Text = dialogo.lblFecha.Text;
+                        //MessageBox.Show("Confirmado", "Resultado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        confirmarTransaccion();
+                        actualizarCupo();
+                        limpiarPantalla();
+                        pictureBox1.Enabled = true;
 
                     }
                 }
-            }
-            else if (total <= 0)
-            {
+                else
+                {
 
-                confirmarTransaccion();
 
+                    using (var dialogo = new frmClienteTarjeta())
+                    {
+                        dialogo.txtValorTotal.Text = txtTotal.Text;
+                        if (dialogo.ShowDialog() == DialogResult.OK)
+                        {
+                            TCliente.Text = dialogo.id;
+                            idTarjeta = dialogo.idTarjeta;
+                            TNombre.Text = "cliente-cliente";
+                            TNumeroTarjeta.Text = dialogo.lblNumeroTarjeta.Text;
+                            TCvc.Text = dialogo.lblCVV.Text;
+                            TFecha.Text = dialogo.lblFecha.Text;
+
+                        }
+                    }
+                    pictureBox1.Enabled = false;
+                }
             }
             else
             {
-                MessageBox.Show("No se han seleccionado productos");
+                MessageBox.Show("No se han seleccionado productos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+
+
+
+
         }
+
+
+
+
+        public void limpiarPantalla()
+        {
+            TNumeroTarjeta.Text = "";
+            TCvc.Text = "";
+            TFecha.Text = "";
+            txtTotal.Text = "";
+            dgvProductos.DataSource = null;
+            dgvProductos.Rows.Clear();
+            total = 0;
+
+        }
+
         private async void confirmarTransaccion()
         {
             using (HttpClient client = new HttpClient())
@@ -81,7 +120,7 @@ namespace CapaVista
 
                     if (response.IsSuccessStatusCode)
                     {
-                        MessageBox.Show("Transaccion insertada correctamente.", "Aviso");
+                        MessageBox.Show("Transaccion insertada correctamente.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     }
                     else
@@ -97,10 +136,36 @@ namespace CapaVista
         }
 
 
+        public async void actualizarCupo()
+        {
+            string ApiBaseUrl = "http://192.168.1.124:88/api/tarjetas";
+            try
+            {
+                using (HttpClient client = new HttpClient())
+                {
 
+                    // Configurar encabezados si es necesario
+                    // client.DefaultRequestHeaders.Add("Authorization", "Bearer TOKEN_AQUI");
+
+                    // Construir la URL con los parámetros de consulta
+                    string url = $"{ApiBaseUrl}/actualizarCupo?idTarjeta={idTarjeta}&valorCompra={total}";
+
+                    // Realizar la solicitud HTTP PUT
+                    HttpResponseMessage response = await client.PutAsync(url, null);
+
+
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
+        }
         private void pictureBox5_Click(object sender, EventArgs e)
         {
             cargarDatosCliente();
+
         }
 
 
@@ -123,7 +188,6 @@ namespace CapaVista
                         {
                             var dialogo = new frmListadoTransaccion();
                             dialogo.dtgTransaccion.DataSource = tarjetas;
-
                             dialogo.ShowDialog();
                         }
                     }

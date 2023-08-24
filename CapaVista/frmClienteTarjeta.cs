@@ -17,7 +17,8 @@ namespace CapaVista
         {
             if (dtgDatosCliente.RowCount == 0)
             {
-                MessageBox.Show("El cliente no existe. por lo tanto no se puede asociar tarjeta");
+                MessageBox.Show("El cliente no existe. por lo tanto no se puede asociar tarjeta", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
             }
             else
             {
@@ -39,7 +40,8 @@ namespace CapaVista
                 else
                 {
                     limpiarPantalla();
-                    MessageBox.Show("No puede ingresar ceros a la izquierda", "Error");
+                    MessageBox.Show("No puede ingresar ceros a la izquierda", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
 
                 }
 
@@ -128,14 +130,33 @@ namespace CapaVista
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (lblNumeroTarjeta.Text != "")
+            try
             {
-                DialogResult = DialogResult.OK;
-                Close();
+
+                if (lblNumeroTarjeta.Text != "")
+                {
+                    decimal saldoDisponible = Convert.ToDecimal(lblSaldoDisponible.Text);
+                    decimal totalCancelar = Convert.ToDecimal(txtValorTotal.Text);
+                    if (totalCancelar <= saldoDisponible)
+                    {
+                        DialogResult = DialogResult.OK;
+                        Close();
+                    }
+                    else
+                    {
+
+                        MessageBox.Show("Fondos insuficientes. Elige otra tarjeta.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Debes seleccionar una tarjeta.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Debes seleccionar una tarjeta.", "Error de entrada.");
+                MessageBox.Show(ex + "");
             }
         }
 

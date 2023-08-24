@@ -46,13 +46,11 @@ namespace TarjetaCreditoApi.Controllers
         }
 
 
-        //public async Task<ActionResult<List<MTarjeta>>> getTarjetas()
-        //{
-        //    var funcion = new DTarjetaCredito();
-        //    var lista = await funcion.mostrarTarjetaCliente(funcion);
-        //    return lista;
-
-
-        //}
+        [HttpPut("actualizarCupo")]
+        public async Task ActualizarCupo([FromQuery] int idTarjeta, decimal valorCompra)
+        {
+            var funcion = new DTarjetaCredito();
+            await funcion.UpdateCupoDisponible(idTarjeta, valorCompra);
+        }
     }
 }

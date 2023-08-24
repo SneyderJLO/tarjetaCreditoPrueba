@@ -83,9 +83,6 @@ namespace CapaVista
 
                 try
                 {
-                    decimal saldoAutorizado = decimal.Parse(lblSaldoAutorizado.Text);
-                    decimal saldoUtilizado = saldoTarjeta(saldoAutorizado);
-                    decimal saldoDisponible = saldoAutorizado - saldoUtilizado;
                     DateTime fechaExpira = DateTime.Parse(labelfECHA.Text);
                     MTarjeta postData = new MTarjeta()
                     {
@@ -93,16 +90,17 @@ namespace CapaVista
                         numeroTarjeta = txtTarjeta.Text,
                         fechaexpira = fechaExpira,
                         cvv = int.Parse(lblCVC.Text),
-                        cupoAutorizado = saldoAutorizado,
-                        cupoUtilizado = saldoUtilizado,
-                        cupoDisponible = saldoDisponible
+                        cupoAutorizado = 2000,
+                        cupoUtilizado = 0,
+                        cupoDisponible = 2000
                     };
 
                     HttpResponseMessage response = await client.PostAsJsonAsync(rutaApi, postData);
 
                     if (response.IsSuccessStatusCode)
                     {
-                        MessageBox.Show("Tarjeta insertada correctamente.", "Aviso");
+                        MessageBox.Show("Tarjeta insertada correctamente", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
 
                     }
                     else
@@ -126,22 +124,7 @@ namespace CapaVista
             return random.Next(100, 999);
         }
 
-        public decimal saldoTarjeta()
-        {
-            Random random = new Random();
-            int value = random.Next(1, 1000);
 
-            return value;
-
-        }
-
-        public decimal saldoTarjeta(decimal valorAutorizado)
-        {
-            Random random = new Random();
-            decimal saldoUtilizado = random.Next((int)valorAutorizado);
-            return saldoUtilizado;
-
-        }
 
 
 
@@ -168,7 +151,7 @@ namespace CapaVista
             lblCVC.Text = generarCVC().ToString();
             btnConfirmar.Enabled = true;
             btnGenerar.Enabled = false;
-            lblSaldoAutorizado.Text = saldoTarjeta().ToString();
+            lblSaldoAutorizado.Text = 2000.ToString();
             txtNombre.Text = lblNombre.Text;
             lblTarjeta.Text = txtTarjeta.Text;
             lblCodigoCvv.Text = lblCVC.Text;

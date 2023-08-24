@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
-  <asmv1:assemblyIdentity name="CapaVista.exe" version="1.0.0.0" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
+  <asmv1:assemblyIdentity name="CapaVista.exe" version="1.0.0.2" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
   <application />
   <entryPoint>
     <assemblyIdentity name="Launcher" version="8.0.0.0" language="neutral" processorArchitecture="msil" />
@@ -62,22 +62,22 @@
       <dsig:DigestValue>+k9d2gwxmtlsuaI8kjDKFXYXnqep2uLElxGbPG6y//Y=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="CapaVista.dll" size="320512">
+  <file name="CapaVista.dll" size="322048">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>srrFFpvWJFGNyB7uDEyHuxdq9jPI1PFDasbTN0YN5cc=</dsig:DigestValue>
+      <dsig:DigestValue>dA/OJhIbCZFTe0ctz1xLx40WEudI1m9vXEV9BjZ55Nw=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="CapaVista.exe" size="147968">
+  <file name="CapaVista.exe" size="147456">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>c3pFGT7K/rpY/5hCGRliqJ5ejynmBI8NTahNI+Ebdrg=</dsig:DigestValue>
+      <dsig:DigestValue>vCtmjqu1S6WI+1b/0a5niOmBoP2xyYHTiwWxgjVkoDg=</dsig:DigestValue>
     </hash>
   </file>
   <file name="CapaVista.runtimeconfig.json" size="464">
@@ -197,13 +197,13 @@
       <dsig:DigestValue>N9QEun1JrCD4FtOJ/07ozAAQOd133uOsi2tS+ohSzaM=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="TarjetaCreditoApi.dll" size="23040">
+  <file name="TarjetaCreditoApi.dll" size="24576">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>gcWAOo/uN3kdl7SJkYXKsLqTx7b0YPFQNyI2oJtC7Vw=</dsig:DigestValue>
+      <dsig:DigestValue>sfErUpQC9Hyp2m1JpmYWwRV3+J/Fk4XgNKMI+kc022w=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>

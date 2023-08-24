@@ -70,5 +70,25 @@ namespace TarjetaCreditoApi.DatosTarjetaCredito
                 }
             }
         }
+        public async Task UpdateCupoDisponible(int idTarjeta, decimal valorCompra)
+        {
+            using (var sql = new SqlConnection(conexion.ConexionSQLSERVER()))
+            {
+                using (SqlCommand command = new SqlCommand("UpdateCupoDisponible", sql))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+
+                    // Agrega el parámetro @id al comando
+                    command.Parameters.AddWithValue("@valorCompra", valorCompra);
+                    command.Parameters.AddWithValue("@id", idTarjeta);
+
+                    await sql.OpenAsync();
+                    // Ejecuta el Stored Procedure
+                    await command.ExecuteNonQueryAsync();
+                }
+            }
+        }
+
     }
 }
+
