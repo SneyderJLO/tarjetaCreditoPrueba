@@ -151,7 +151,7 @@ namespace CapaVista
             try
 
             {
-                var totalCompra = Convert.ToDecimal(txtTotal.Text.Substring(0, txtTotal.Text.IndexOf('.')));
+                //var totalCompra = Convert.ToDecimal(txtTotal.Text.Substring(0, txtTotal.Text.IndexOf('.')));
                 //MessageBox.Show(totalCompra + "");
                 using (HttpClient client = new HttpClient())
                 {
@@ -160,7 +160,7 @@ namespace CapaVista
                     // client.DefaultRequestHeaders.Add("Authorization", "Bearer TOKEN_AQUI");
 
                     // Construir la URL con los parámetros de consulta
-                    string url = $"{ApiBaseUrl}/actualizarCupo?idTarjeta={idTarjeta}&valorCompra={totalCompra}";
+                    string url = $"{ApiBaseUrl}/actualizarCupo?idTarjeta={idTarjeta}&valorCompra={total}";
 
                     // Realizar la solicitud HTTP PUT
                     HttpResponseMessage response = await client.PutAsync(url, null);
