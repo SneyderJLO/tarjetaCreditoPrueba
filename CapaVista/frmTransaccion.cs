@@ -19,7 +19,7 @@ namespace CapaVista
 {
     public partial class frmTransaccion : Form
     {
-        decimal total = 0;
+        decimal total = 0m;
         int idTarjeta = 0;
         decimal saldoDisponible = 0;
         List<MProducto> tarjetas = new List<MProducto>();
@@ -105,7 +105,7 @@ namespace CapaVista
             txtTotal.Text = "";
             dgvProductos.DataSource = null;
             dgvProductos.Rows.Clear();
-            total = 0;
+            total = 0m;
 
         }
 
@@ -151,8 +151,11 @@ namespace CapaVista
             try
 
             {
-                //var totalCompra = Convert.ToDecimal(txtTotal.Text.Substring(0, txtTotal.Text.IndexOf('.')));
-                //MessageBox.Show(totalCompra + "");
+                // int totalCompra = decimal.Parse(total.ToString());//Convert.ToDecimal(txtTotal.Text.Substring(0, txtTotal.Text.IndexOf('.')));
+                decimal totalCompra = Math.Round(total, 2);
+
+                // MessageBox.Show(totalCompra + "");
+
                 using (HttpClient client = new HttpClient())
                 {
 
@@ -160,7 +163,7 @@ namespace CapaVista
                     // client.DefaultRequestHeaders.Add("Authorization", "Bearer TOKEN_AQUI");
 
                     // Construir la URL con los parámetros de consulta
-                    string url = $"{ApiBaseUrl}/actualizarCupo?idTarjeta={idTarjeta}&valorCompra={total}";
+                    string url = $"{ApiBaseUrl}/actualizarCupo?idTarjeta={idTarjeta}&valorCompra={totalCompra}";
 
                     // Realizar la solicitud HTTP PUT
                     HttpResponseMessage response = await client.PutAsync(url, null);
