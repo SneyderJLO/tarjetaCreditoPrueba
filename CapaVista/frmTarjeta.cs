@@ -21,6 +21,7 @@ namespace CapaVista
 
     public partial class frmTarjeta : Form
     {
+        DateTime fechaExpira = DateTime.Now;
         public const string rutaApi = "http://192.168.1.124:88/api/tarjetas/tarjeta"; // Reemplaza con la URL de tu API
         public frmTarjeta()
         {
@@ -36,8 +37,6 @@ namespace CapaVista
             labelfECHA.Parent = pctCard;
             lblCVC.Parent = pctCard;
             lbl.Parent = pctCard;
-            comboBox1.SelectedIndex = 0;
-            comboBox2.SelectedIndex = 0;
         }
 
 
@@ -83,12 +82,12 @@ namespace CapaVista
 
                 try
                 {
-                    DateTime fechaExpira = DateTime.Parse(labelfECHA.Text);
+
                     MTarjeta postData = new MTarjeta()
                     {
                         idCliente = int.Parse(cedula3.Text),
                         numeroTarjeta = txtTarjeta.Text,
-                        fechaexpira = fechaExpira,
+                        fechaexpira = this.fechaExpira,
                         cvv = int.Parse(lblCVC.Text),
                         cupoAutorizado = 2000,
                         cupoUtilizado = 0,
@@ -131,8 +130,8 @@ namespace CapaVista
         public DateTime GenerateRandomDate()
         {
             Random random = new Random();
-            DateTime startDate = DateTime.Now.AddYears(-1); // Hace un año desde hoy
-            DateTime endDate = DateTime.Now;
+            DateTime startDate = DateTime.Now.AddYears(2); // Hace un año desde hoy
+            DateTime endDate = DateTime.Now.AddYears(5);
 
             TimeSpan timeSpan = endDate - startDate;
             int randomDays = random.Next(0, (int)timeSpan.TotalDays);
@@ -146,15 +145,19 @@ namespace CapaVista
             long tarjeta = GenerarNumeroAleatorio();
             int ultimoDigito = CalcularDigitoVerificador(tarjeta.ToString());
             txtTarjeta.Text = tarjeta.ToString() + ultimoDigito;
-            labelfECHA.Text = GenerateRandomDate().ToString();
+            fechaExpira = GenerateRandomDate();
+            labelfECHA.Text = fechaExpira.ToString("MM/yy");
             lblNombre.Text = "Cliente-cliente-cliente";
             lblCVC.Text = generarCVC().ToString();
             btnConfirmar.Enabled = true;
-            btnGenerar.Enabled = false;
+            //btnGenerar.Enabled = false;
             lblSaldoAutorizado.Text = 2000.ToString();
             txtNombre.Text = lblNombre.Text;
             lblTarjeta.Text = txtTarjeta.Text;
             lblCodigoCvv.Text = lblCVC.Text;
+            txtMes.Text = labelfECHA.Text.Substring(0, labelfECHA.Text.IndexOf("/"));
+            txtAnio.Text = labelfECHA.Text.Substring(labelfECHA.Text.IndexOf("/") + 1);
+
         }
 
 

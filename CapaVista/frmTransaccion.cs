@@ -21,6 +21,7 @@ namespace CapaVista
     {
         decimal total = 0;
         int idTarjeta = 0;
+        decimal saldoDisponible = 0;
         List<MProducto> tarjetas = new List<MProducto>();
         public frmTransaccion()
         {
@@ -40,17 +41,24 @@ namespace CapaVista
 
                 if (TCliente.Text != "" && TNumeroTarjeta.Text != "")
                 {
-                    DialogResult result = MessageBox.Show("¿Estás seguro de continuar?", "Confirmación",
+                    if (total < saldoDisponible)
+                    {
+                        DialogResult result = MessageBox.Show("¿Estás seguro de continuar?", "Confirmación",
                                                 MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-                    if (result == DialogResult.Yes)
-                    {
-                        //MessageBox.Show("Confirmado", "Resultado", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        confirmarTransaccion();
-                        actualizarCupo();
-                        limpiarPantalla();
-                        pictureBox1.Enabled = true;
+                        if (result == DialogResult.Yes)
+                        {
+                            //MessageBox.Show("Confirmado", "Resultado", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+                            confirmarTransaccion();
+                            actualizarCupo();
+                            limpiarPantalla();
+
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Superaste el saldo disponible de tu tarjeta.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     }
                 }
                 else
@@ -68,10 +76,11 @@ namespace CapaVista
                             TNumeroTarjeta.Text = dialogo.lblNumeroTarjeta.Text;
                             TCvc.Text = dialogo.lblCVV.Text;
                             TFecha.Text = dialogo.lblFecha.Text;
+                            saldoDisponible = decimal.Parse(dialogo.lblSaldoDisponible.Text);
 
                         }
                     }
-                    pictureBox1.Enabled = false;
+                    //pictureBox1.Enabled = false;
                 }
             }
             else
@@ -140,7 +149,9 @@ namespace CapaVista
         {
             string ApiBaseUrl = "http://192.168.1.124:88/api/tarjetas";
             try
+
             {
+                var totalCompra = Convert.ToDecimal(txtTotal.Text);
                 using (HttpClient client = new HttpClient())
                 {
 
@@ -148,7 +159,7 @@ namespace CapaVista
                     // client.DefaultRequestHeaders.Add("Authorization", "Bearer TOKEN_AQUI");
 
                     // Construir la URL con los parámetros de consulta
-                    string url = $"{ApiBaseUrl}/actualizarCupo?idTarjeta={idTarjeta}&valorCompra={total}";
+                    string url = $"{ApiBaseUrl}/actualizarCupo?idTarjeta={idTarjeta}&valorCompra={totalCompra}";
 
                     // Realizar la solicitud HTTP PUT
                     HttpResponseMessage response = await client.PutAsync(url, null);
@@ -259,20 +270,55 @@ namespace CapaVista
                           select p.Precio).FirstOrDefault();
             string idProducto = cmbProducto.SelectedIndex + 1 + "";
             string tituloProducto = txtProducto.Text;
-            string precioProducto = precio.ToString();
+            string precioProducto = precio.ToString("N2");
+            // int indexDecimal = precioProducto.IndexOf('.');
+
+
             DataGridViewRow row = new DataGridViewRow();
-            row.CreateCells(dgvProductos, idProducto, tituloProducto, precioProducto);
+
+
+
+
+            row.CreateCells(dgvProductos, idProducto, tituloProducto, precioProducto);//.Substring(0, indexDecimal));
 
             // Agregar la fila a la DataGridView
             dgvProductos.Rows.Add(row);
             total += precio;
             this.txtTotal.Text = "" + total;
 
+
+
+            //  MessageBox.Show("Superaste el saldo disponible de tu tarjeta.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+
         }
 
         private void panel3_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void dgvProductos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridViewRow selectedRow = dgvProductos.Rows[e.RowIndex];
+            var dgv = (DataGridView)sender;
+            var precio = decimal.Parse(selectedRow.Cells["precio"].Value.ToString());
+            if (e.ColumnIndex == dgv.Columns["eliminar"].Index)
+            {
+                DialogResult dialogResult = MessageBox.Show("¿Estás seguro de eliminar el producto?", "Eliminar Producto", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+                if (dialogResult == DialogResult.Yes)
+                {
+
+                    total -= precio;
+
+                    txtTotal.Text = total.ToString("N2");
+                    dgvProductos.Rows.RemoveAt(dgvProductos.SelectedRows[0].Index);
+
+                }
+
+
+
+            }
         }
     }
 }

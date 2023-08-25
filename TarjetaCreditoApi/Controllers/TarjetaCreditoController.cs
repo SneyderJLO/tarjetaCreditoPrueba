@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.Data.SqlTypes;
 using TarjetaCreditoApi.DatosTarjetaCredito;
 using TarjetaCreditoApi.Model;
 using TarjetaCreditoApi.Model.Transaccion;
@@ -7,7 +8,7 @@ namespace TarjetaCreditoApi.Controllers
 {
     [ApiController]
     [Route("api/tarjetas")]
-    public class TarjetaCreditoController
+    public class TarjetaCreditoController : ControllerBase
     {
         [HttpGet("tarjetas")]
         public async Task<ActionResult<List<MTarjeta>>> GetTarjetas([FromQuery] int id)
@@ -51,6 +52,29 @@ namespace TarjetaCreditoApi.Controllers
         {
             var funcion = new DTarjetaCredito();
             await funcion.UpdateCupoDisponible(idTarjeta, valorCompra);
+
         }
+
+
+        /*
+         * 
+         * -------- REFACTORING API --------
+         * 
+         */
+        //[HttpGet]
+        //[Route("/listarTarjetas")]
+        //public async Task<ActionResult<List<MTarjeta>>> GetTarjetas([FromQuery] int id)
+        //{
+        //    var tarjetas = await _tarjetaService.MostrarTarjetaCliente(id);
+
+        //    if (tarjetas == null || tarjetas.Count == 0)
+        //    {
+        //        return NotFound(); // Devuelve un HTTP 404 si no se encuentran tarjetas
+        //    }
+
+        //    return Ok(tarjetas); // Devuelve un HTTP 200 OK con la lista de tarjetas
+        //}
+
+
     }
 }

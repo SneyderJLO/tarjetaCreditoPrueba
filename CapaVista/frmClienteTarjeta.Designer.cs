@@ -41,6 +41,9 @@ namespace CapaVista
             panel10 = new Panel();
             button1 = new Button();
             panel3 = new Panel();
+            txtValorTotal = new Label();
+            label6 = new Label();
+            label7 = new Label();
             btn_actualizar = new Button();
             lblSaldoDisponible = new Label();
             label9 = new Label();
@@ -69,9 +72,6 @@ namespace CapaVista
             pictureBox2 = new PictureBox();
             panel4 = new Panel();
             panel1 = new Panel();
-            txtValorTotal = new Label();
-            label6 = new Label();
-            label7 = new Label();
             panelContainer.SuspendLayout();
             panel9.SuspendLayout();
             panel11.SuspendLayout();
@@ -236,6 +236,37 @@ namespace CapaVista
             panel3.Name = "panel3";
             panel3.Size = new Size(849, 128);
             panel3.TabIndex = 3;
+            // 
+            // txtValorTotal
+            // 
+            txtValorTotal.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
+            txtValorTotal.ForeColor = Color.FromArgb(224, 225, 221);
+            txtValorTotal.Location = new Point(699, 74);
+            txtValorTotal.Name = "txtValorTotal";
+            txtValorTotal.Size = new Size(73, 21);
+            txtValorTotal.TabIndex = 49;
+            txtValorTotal.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // label6
+            // 
+            label6.ForeColor = Color.FromArgb(224, 225, 221);
+            label6.Location = new Point(693, 89);
+            label6.Name = "label6";
+            label6.Size = new Size(92, 20);
+            label6.TabIndex = 48;
+            label6.Text = "_______________";
+            label6.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("Segoe UI", 9F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
+            label7.ForeColor = Color.White;
+            label7.Location = new Point(699, 50);
+            label7.Name = "label7";
+            label7.Size = new Size(99, 15);
+            label7.TabIndex = 47;
+            label7.Text = "Valor a cancelar";
             // 
             // btn_actualizar
             // 
@@ -541,37 +572,6 @@ namespace CapaVista
             panel1.Size = new Size(1032, 562);
             panel1.TabIndex = 2;
             // 
-            // txtValorTotal
-            // 
-            txtValorTotal.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
-            txtValorTotal.ForeColor = Color.FromArgb(224, 225, 221);
-            txtValorTotal.Location = new Point(699, 74);
-            txtValorTotal.Name = "txtValorTotal";
-            txtValorTotal.Size = new Size(73, 21);
-            txtValorTotal.TabIndex = 49;
-            txtValorTotal.TextAlign = ContentAlignment.MiddleLeft;
-            // 
-            // label6
-            // 
-            label6.ForeColor = Color.FromArgb(224, 225, 221);
-            label6.Location = new Point(693, 89);
-            label6.Name = "label6";
-            label6.Size = new Size(92, 20);
-            label6.TabIndex = 48;
-            label6.Text = "_______________";
-            label6.TextAlign = ContentAlignment.MiddleLeft;
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Font = new Font("Segoe UI", 9F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
-            label7.ForeColor = Color.White;
-            label7.Location = new Point(699, 50);
-            label7.Name = "label7";
-            label7.Size = new Size(99, 15);
-            label7.TabIndex = 47;
-            label7.Text = "Valor a cancelar";
-            // 
             // frmClienteTarjeta
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -624,7 +624,6 @@ namespace CapaVista
         private PictureBox pictureBox1;
         private Label label2;
         private Panel panel1;
-        private Label lblSaldoDisponible;
         private Label label9;
         private Label label10;
         private PictureBox pictureBox3;
@@ -643,5 +642,6 @@ namespace CapaVista
         private Label label6;
         private Label label7;
         public Label txtValorTotal;
+        public Label lblSaldoDisponible;
     }
 }

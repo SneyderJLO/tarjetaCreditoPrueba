@@ -42,8 +42,6 @@ namespace TarjetaCreditoApi.DatosTarjetaCredito
                     }
                 }
 
-
-
             }
 
             return listTarjetas;

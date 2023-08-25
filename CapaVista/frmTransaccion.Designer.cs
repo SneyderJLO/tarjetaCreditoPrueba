@@ -44,6 +44,7 @@
             id = new DataGridViewTextBoxColumn();
             Producto = new DataGridViewTextBoxColumn();
             Precio = new DataGridViewTextBoxColumn();
+            eliminar = new DataGridViewButtonColumn();
             txtProducto = new Label();
             cmbProducto = new ComboBox();
             rtbDescripcionProducto = new RichTextBox();
@@ -114,7 +115,7 @@
             pictureBox5.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             pictureBox5.Cursor = Cursors.Hand;
             pictureBox5.Image = (Image)resources.GetObject("pictureBox5.Image");
-            pictureBox5.Location = new Point(1133, 12);
+            pictureBox5.Location = new Point(1132, 12);
             pictureBox5.Name = "pictureBox5";
             pictureBox5.Size = new Size(39, 43);
             pictureBox5.SizeMode = PictureBoxSizeMode.Zoom;
@@ -128,7 +129,7 @@
             label22.AutoSize = true;
             label22.Font = new Font("Segoe UI Emoji", 9F, FontStyle.Bold, GraphicsUnit.Point);
             label22.ForeColor = Color.FromArgb(224, 225, 221);
-            label22.Location = new Point(1017, 58);
+            label22.Location = new Point(1016, 58);
             label22.Name = "label22";
             label22.Size = new Size(160, 16);
             label22.TabIndex = 8;
@@ -218,10 +219,11 @@
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             dgvProductos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvProductos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dgvProductos.Columns.AddRange(new DataGridViewColumn[] { id, Producto, Precio });
+            dgvProductos.Columns.AddRange(new DataGridViewColumn[] { id, Producto, Precio, eliminar });
             dgvProductos.GridColor = Color.Gainsboro;
             dgvProductos.Location = new Point(37, 206);
             dgvProductos.Margin = new Padding(3, 2, 3, 2);
+            dgvProductos.MultiSelect = false;
             dgvProductos.Name = "dgvProductos";
             dgvProductos.ReadOnly = true;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
@@ -237,13 +239,14 @@
             dgvProductos.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             dataGridViewCellStyle3.BackColor = Color.White;
             dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = Color.AliceBlue;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.GradientInactiveCaption;
             dataGridViewCellStyle3.SelectionForeColor = SystemColors.WindowText;
             dgvProductos.RowsDefaultCellStyle = dataGridViewCellStyle3;
             dgvProductos.RowTemplate.Height = 29;
             dgvProductos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvProductos.Size = new Size(613, 130);
             dgvProductos.TabIndex = 29;
+            dgvProductos.CellContentClick += dgvProductos_CellContentClick;
             // 
             // id
             // 
@@ -265,6 +268,15 @@
             Precio.MinimumWidth = 6;
             Precio.Name = "Precio";
             Precio.ReadOnly = true;
+            // 
+            // eliminar
+            // 
+            eliminar.HeaderText = "";
+            eliminar.Name = "eliminar";
+            eliminar.ReadOnly = true;
+            eliminar.Resizable = DataGridViewTriState.False;
+            eliminar.Text = "Eliminar";
+            eliminar.UseColumnTextForButtonValue = true;
             // 
             // txtProducto
             // 
@@ -772,5 +784,6 @@
         private DataGridViewTextBoxColumn id;
         private DataGridViewTextBoxColumn Producto;
         private DataGridViewTextBoxColumn Precio;
+        private DataGridViewButtonColumn eliminar;
     }
 }
