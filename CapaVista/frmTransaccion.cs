@@ -152,7 +152,9 @@ namespace CapaVista
 
             {
                 // int totalCompra = decimal.Parse(total.ToString());//Convert.ToDecimal(txtTotal.Text.Substring(0, txtTotal.Text.IndexOf('.')));
-                decimal totalCompra = Math.Round(total, 2);
+                int valueTotal = (int)total;
+                //MessageBox.Show(valueTotal + "");
+                decimal totalCompra = valueTotal;
 
                 // MessageBox.Show(totalCompra + "");
 
