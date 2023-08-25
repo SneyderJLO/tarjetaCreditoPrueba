@@ -151,7 +151,8 @@ namespace CapaVista
             try
 
             {
-                var totalCompra = Convert.ToDecimal(txtTotal.Text);
+                var totalCompra = Convert.ToDecimal(txtTotal.Text.Substring(0, txtTotal.Text.IndexOf('.')));
+                //MessageBox.Show(totalCompra + "");
                 using (HttpClient client = new HttpClient())
                 {
 
